@@ -1,0 +1,187 @@
+{
+  "nav": {
+    "home": "Genel Bakış",
+    "map": "Harita",
+    "network": "Ağ",
+    "timeline": "Kronoloji",
+    "scholars": "Tarihçiler",
+    "sources": "Kaynaklar",
+    "statistics": "İstatistikler",
+    "about": "Hakkında",
+    "silsile": "Silsile",
+    "compare": "Karşılaştır",
+    "search_placeholder": "Tarihçi, kaynak veya havza ara..."
+  },
+  "stats": {
+    "scholars": "Tarihçi",
+    "sources": "Kaynak",
+    "havzas": "Havza",
+    "dia_links": "DİA Bağlantısı",
+    "relations": "İlişki Ağı",
+    "target": "hedef",
+    "completed": "tamamlandı"
+  },
+  "havza_names": {
+    "iran": "İran",
+    "misir": "Mısır",
+    "hint": "Hint Alt Kıtası",
+    "endulus": "Endülüs",
+    "arabistan": "Arabistan",
+    "magrib": "Mağrib",
+    "turkistan": "Türkistan",
+    "balkanlar": "Balkanlar",
+    "biladussam": "Bilâdüşşam",
+    "dicle_firat": "Dicle-Fırat",
+    "anadolu": "Anadolu",
+    "diger": "Diğer Havzalar"
+  },
+  "periods": {
+    "pre_islamic": "İslam Öncesi",
+    "formation": "Teşekkül Dönemi (7-10. yy)",
+    "development": "Gelişim Dönemi (11-18. yy)",
+    "modern": "Daralma ve Çeşitlenme (19-20. yy)"
+  },
+  "source_types": {
+    "genel_tarih": "Genel Tarih",
+    "hanedan_tarihi": "Hanedan Tarihi",
+    "tabakat": "Tabakat/Biyografi",
+    "cografya": "Coğrafya",
+    "seyahatname": "Seyahatname",
+    "siyer_megazi": "Siyer ve Meğazî",
+    "futuh": "Fütûhat",
+    "ensab": "Ensâb",
+    "kronoloji": "Kronoloji",
+    "edebiyat": "Edebiyat",
+    "siir_divan": "Şiir/Divan",
+    "tasavvuf": "Tasavvuf",
+    "fıkıh": "Fıkıh",
+    "hadis": "Hadis",
+    "tefsir": "Tefsir",
+    "siyasetname": "Siyasetname",
+    "lugat": "Lügat",
+    "modern_arastirma": "Modern Araştırma",
+    "sehir_tarihi": "Şehir Tarihi",
+    "arkeoloji": "Arkeoloji",
+    "diger": "Diğer"
+  },
+  "scholar_detail": {
+    "full_name": "Tam Künye",
+    "birth": "Doğum",
+    "death": "Vefat",
+    "century": "Yüzyıl",
+    "city": "Şehir",
+    "identity": "Kimlik",
+    "works": "Eserleri",
+    "teachers": "Hocaları",
+    "students": "Talebeleri",
+    "contemporaries": "Çağdaşları",
+    "dia_link": "DİA Maddesi",
+    "havza": "Havza",
+    "fields": "İlgi Alanları",
+    "no_data": "Veri bulunamadı"
+  },
+  "source_detail": {
+    "title": "Eser Adı",
+    "alt_names": "Diğer Adları",
+    "author": "Müellif",
+    "type": "Tür",
+    "language": "Dil",
+    "dynasty": "Hanedan",
+    "city": "Yazılma Şehri",
+    "havza": "Havza",
+    "description": "Tanıtım"
+  },
+  "dashboard": {
+    "title": "İslam Tarihyazım Tarihi Atlası",
+    "subtitle": "İslam tarihyazım geleneğinin dijital haritası",
+    "havza_overview": "Havzalara Göre Dağılım",
+    "century_overview": "Yüzyıllara Göre Dağılım",
+    "type_overview": "Eser Türlerine Göre Dağılım",
+    "recent_scholars": "Öne Çıkan Tarihçiler",
+    "century_suffix": ". yy"
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "no_results": "Sonuç bulunamadı",
+    "show_all": "Tümünü Göster",
+    "back": "Geri",
+    "hijri": "Hicrî",
+    "ce": "Milâdî",
+    "scholar_count": "tarihçi",
+    "work_count": "eser",
+    "search": "Ara",
+    "filter": "Filtrele",
+    "all": "Tümü",
+    "more": "daha",
+    "export": "Dışa Aktar"
+  },
+  "map": {
+    "geocoded": "konumlandırıldı",
+    "cities": "Şehir",
+    "top_cities": "Başlıca Şehirler"
+  },
+  "network": {
+    "edges": "bağlantı",
+    "rel_type": "İlişki Türü",
+    "show_all": "Tüm bağlantıları göster",
+    "hint": "Çift tıklama → tarihçi detay. Sürükle → düğüm taşı. Kaydır → yakınlaştır.",
+    "connected": "Bağlantılı Tarihçiler",
+    "go_to_scholar": "Tarihçi Sayfası",
+    "mini_title": "İlişki Ağı",
+    "expand": "Tam ağ görselleştirme"
+  },
+  "timeline": {
+    "brush_hint": "Zaman aralığı seçmek için sürükleyin",
+    "clear_brush": "Seçimi temizle"
+  },
+  "statistics": {
+    "havza_comparison": "Havza Karşılaştırma Tablosu",
+    "havza_century": "Havza × Yüzyıl Dağılımı",
+    "type_distribution": "Eser Türü Dağılımı",
+    "relations_overview": "İlişki Ağı Özeti",
+    "top_cities": "En Çok Tarihçi Barındıran Şehirler",
+    "internal_links": "İTTA İç Bağlantı",
+    "dia_ratio": "DİA Eşleşme",
+    "avg_century": "Ort. Yüzyıl",
+    "century_range": "Yüzyıl Aralığı"
+  },
+  "about": {
+    "title": "İTTA Hakkında",
+    "subtitle": "İslam tarihyazım geleneğinin dijital haritası ve analiz platformu",
+    "what_title": "Proje Nedir?",
+    "what_text": "İTTA (İslam Tarihyazım Tarihi Atlası), İslam medeniyetinin tarihyazım geleneğini dijital ortamda haritalandıran, görselleştiren ve analiz eden bir araştırma platformudur. Proje, 7. yüzyıldan 20. yüzyıla kadar uzanan geniş bir coğrafyada faaliyet gösteren tarihçileri, onların eserlerini ve aralarındaki ilişkileri interaktif haritalar, ağ grafikleri ve kronolojik görselleştirmeler aracılığıyla sunmaktadır.",
+    "method_title": "Metodoloji",
+    "method_text": "Veriler, Macit Bey'in MHTT (Müslüman Havzalardaki Tarih Telifi) projesindeki kapsamlı havza araştırmalarından derlenmiş ve TDV İslam Ansiklopedisi (DİA) verileriyle zenginleştirilmiştir. Hoca-talebe ilişkileri, çağdaşlık bağları ve coğrafi dağılımlar dijital yöntemlerle analiz edilmektedir.",
+    "sources_title": "Veri Kaynakları",
+    "source_mhtt": "Müslüman Havzalardaki Tarih Telifi — İran, Mısır, Hint Alt Kıtası ve diğer havzaları kapsayan tarihyazım araştırmaları.",
+    "source_dia": "TDV İslam Ansiklopedisi — 8.500+ biyografik madde, hoca-talebe ilişkileri, coğrafi veriler ve önem puanları.",
+    "data_title": "Mevcut Veri Seti",
+    "team_title": "Ekip",
+    "team_ali_role": "Proje Yürütücüsü, Bilgisayar Mühendisliği",
+    "team_ali_affil": "Selçuk Üniversitesi, Bilgisayar Mühendisliği Bölümü",
+    "team_huseyin_role": "Alan Uzmanı, İslam Tarihi",
+    "team_huseyin_affil": "Selçuk Üniversitesi, İlahiyat Fakültesi",
+    "tech_title": "Teknoloji",
+    "cite_title": "Atıf"
+  },
+  "silsile": {
+    "title": "Hoca-Talebe Silsilesi",
+    "subtitle": "İlim aktarım zinciri görselleştirme",
+    "search_placeholder": "Silsile görüntülemek için tarihçi arayın...",
+    "generations": "Kuşak derinliği",
+    "hint": "Düğüme tıklayarak tarihçi detay sayfasına gidin",
+    "empty": "Silsile görüntülemek için yukarıdan bir tarihçi seçin"
+  },
+  "compare": {
+    "title": "Havza Karşılaştırma"
+  },
+  "mobile": {
+    "more": "Daha",
+    "search_hint": "Tarihçi veya kaynak adını yazın",
+    "clear_filters": "Filtreleri temizle",
+    "filters": "Filtreler",
+    "close": "Kapat",
+    "export_done": "Dışa aktarma tamamlandı",
+    "offline": "Çevrimdışı mod"
+  }
+}
