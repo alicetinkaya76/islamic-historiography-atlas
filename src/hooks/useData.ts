@@ -75,10 +75,11 @@ export interface HavzaGeoCollection {
 }
 
 const cache: Record<string, unknown> = {};
+const BASE = import.meta.env.BASE_URL;
 
 async function loadJSON<T>(path: string): Promise<T> {
   if (cache[path]) return cache[path] as T;
-  const res = await fetch(path);
+  const res = await fetch(BASE + path);
   const data = await res.json();
   cache[path] = data;
   return data as T;
@@ -88,7 +89,7 @@ export function useAuthors() {
   const [authors, setAuthors] = useState<Author[]>([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    loadJSON<Author[]>('/data/itta_authors.json').then(d => { setAuthors(d); setLoading(false); });
+    loadJSON<Author[]>('data/itta_authors.json').then(d => { setAuthors(d); setLoading(false); });
   }, []);
   return { authors, loading };
 }
@@ -97,7 +98,7 @@ export function useWorks() {
   const [works, setWorks] = useState<Work[]>([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    loadJSON<Work[]>('/data/itta_works.json').then(d => { setWorks(d); setLoading(false); });
+    loadJSON<Work[]>('data/itta_works.json').then(d => { setWorks(d); setLoading(false); });
   }, []);
   return { works, loading };
 }
@@ -106,7 +107,7 @@ export function useRelations() {
   const [relations, setRelations] = useState<Relation[]>([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    loadJSON<Relation[]>('/data/itta_relations.json').then(d => { setRelations(d); setLoading(false); });
+    loadJSON<Relation[]>('data/itta_relations.json').then(d => { setRelations(d); setLoading(false); });
   }, []);
   return { relations, loading };
 }
@@ -115,7 +116,7 @@ export function useStats() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    loadJSON<Stats>('/data/itta_stats.json').then(d => { setStats(d); setLoading(false); });
+    loadJSON<Stats>('data/itta_stats.json').then(d => { setStats(d); setLoading(false); });
   }, []);
   return { stats, loading };
 }
@@ -124,7 +125,7 @@ export function useCityCoords() {
   const [coords, setCoords] = useState<CityCoords>({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    loadJSON<CityCoords>('/data/city_coords.json').then(d => { setCoords(d); setLoading(false); });
+    loadJSON<CityCoords>('data/city_coords.json').then(d => { setCoords(d); setLoading(false); });
   }, []);
   return { coords, loading };
 }
@@ -133,7 +134,7 @@ export function useHavzaGeo() {
   const [geo, setGeo] = useState<HavzaGeoCollection | null>(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    loadJSON<HavzaGeoCollection>('/data/havza_geo.json').then(d => { setGeo(d); setLoading(false); });
+    loadJSON<HavzaGeoCollection>('data/havza_geo.json').then(d => { setGeo(d); setLoading(false); });
   }, []);
   return { geo, loading };
 }
