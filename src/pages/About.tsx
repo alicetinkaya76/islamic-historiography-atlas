@@ -77,38 +77,26 @@ export default function About() {
               <div className="about-team-info">
                 <h3>Prof. Dr. Abdulkadir Macit</h3>
                 <p className="about-team-role">{t('about.team_macit_role')}</p>
-                <p className="about-team-skills">{t('about.team_macit_skills')}</p>
                 <p className="about-team-affil">{t('about.team_macit_affil')}</p>
-              </div>
-            </div>
-            <div className="about-team-card">
-              <div className="about-team-stripe" style={{ background: '#1565C0' }} />
-              <div className="about-team-info">
-                <h3>Dr. Ali Çetinkaya</h3>
-                <p className="about-team-role">{t('about.team_ali_role')}</p>
-                <p className="about-team-skills">{t('about.team_ali_skills')}</p>
-                <p className="about-team-affil">{t('about.team_ali_affil')}</p>
-              </div>
-            </div>
-            <div className="about-team-card">
-              <div className="about-team-stripe" style={{ background: '#2E7D32' }} />
-              <div className="about-team-info">
-                <h3>Dr. Hüseyin Gökalp</h3>
-                <p className="about-team-role">{t('about.team_huseyin_role')}</p>
-                <p className="about-team-skills">{t('about.team_huseyin_skills')}</p>
-                <p className="about-team-affil">{t('about.team_huseyin_affil')}</p>
               </div>
             </div>
             <div className="about-team-card">
               <div className="about-team-stripe" style={{ background: '#E65100' }} />
               <div className="about-team-info">
-                <h3>Dr. Halil İbrahim Erol & Dr. Selahattin Polatoğlu</h3>
-                <p className="about-team-role">{t('about.team_coord_role')}</p>
-                <p className="about-team-skills">{t('about.team_coord_skills')}</p>
+                <h3>Dr. Selahattin Polatoğlu</h3>
+                <p className="about-team-role">{t('about.team_polatoglu_role')}</p>
+                <p className="about-team-affil">{t('about.team_polatoglu_affil')}</p>
+              </div>
+            </div>
+            <div className="about-team-card">
+              <div className="about-team-stripe" style={{ background: '#2E7D32' }} />
+              <div className="about-team-info">
+                <h3>Dr. Halil İbrahim Erol</h3>
+                <p className="about-team-role">{t('about.team_erol_role')}</p>
+                <p className="about-team-affil">{t('about.team_erol_affil')}</p>
               </div>
             </div>
           </div>
-          <p className="about-team-note">{t('about.team_assistants')}</p>
         </section>
 
         {/* Technology */}
@@ -126,7 +114,7 @@ export default function About() {
           <h2 className="about-section-title">{t('about.cite_title')}</h2>
           <div className="about-cite-block">
             <code>
-              Macit, A., Çetinkaya, A. & Gökalp, H. (2026). İTTA: İslam Tarihyazım Tarihi Atlası — Atlas of Islamic Historiography. Selçuk University & Kocaeli University.
+              Macit, A., Polatoğlu, S. & Erol, H. İ. (2026). İTTA: İslam Tarihyazım Tarihi Atlası — Atlas of Islamic Historiography.
             </code>
           </div>
         </section>
