@@ -74,11 +74,37 @@
       "periods": {
         "formation": {
           "tr": "İran havzası, İslam tarihyazımının ilk döneminde Kûfe ve Basra merkezli ilim halkaları sayesinde öncü bir konuma sahip olmuştur. Taberî, Ya'kûbî ve Belâzürî gibi büyük tarihçiler bu havzada yetişmiştir. Abbâsî halifeliğinin Bağdat'a taşınması, bu bölgenin tarihyazım merkezi olmasını hızlandırmıştır.",
-          "en": "The Iranian basin occupied a pioneering position in the first period of Islamic historiography through scholarly circles centered in Kufa and Basra. Great historians such as al-Ṭabarī, al-Yaʿqūbī, and al-Balādhurī were raised in this basin. The relocation of the Abbasid caliphate to Baghdad accelerated this region's emergence as a historiographical center."
+          "en": "The Iranian basin occupied a pioneering position in the first period of Islamic historiography through scholarly circles centered in Kufa and Basra. Great historians such as al-Ṭabarī, al-Yaʿqūbī, and al-Balādhurī were raised in this basin. The relocation of the Abbasid caliphate to Baghdad accelerated this region's emergence as a historiographical center.",
+          "key_themes": [
+            "Sâsânî mirası",
+            "Şuûbiyye hareketi",
+            "Erken Farsça tarihyazımı",
+            "İslâm öncesi destan geleneği"
+          ],
+          "key_historians": [
+            "Ebû Hanîfe ed-Dînaverî",
+            "Belâzürî",
+            "Hamza el-İsfahânî",
+            "Ebû Reyhân el-Bîrûnî"
+          ]
         },
         "development": {
           "tr": "Selçuklular, İlhanlılar, Timûrlular ve Safevîler döneminde İran havzasında tarih yazıcılığı altın çağını yaşamıştır. Farsça tarih yazıcılığı bu dönemde Arapçanın yanında öne çıkmıştır. Cüveynî, Reşîdüddin, Hâfız-ı Ebrû ve İskender Beg Münşî gibi isimler dönemin önde gelen tarihçileridir.",
-          "en": "During the Seljuk, Ilkhanid, Timurid, and Safavid periods, historiography in the Iranian basin experienced its golden age. Persian historiography rose alongside Arabic during this era. Juwaynī, Rashīd al-Dīn, Ḥāfiẓ-i Abrū, and Iskandar Beg Munshī are among the leading historians of the period."
+          "en": "During the Seljuk, Ilkhanid, Timurid, and Safavid periods, historiography in the Iranian basin experienced its golden age. Persian historiography rose alongside Arabic during this era. Juwaynī, Rashīd al-Dīn, Ḥāfiẓ-i Abrū, and Iskandar Beg Munshī are among the leading historians of the period.",
+          "key_themes": [
+            "Selçuklu saray tarihçiliği",
+            "Moğol/İlhanlı kronik geleneği",
+            "Safevî Şiî tarih inşası",
+            "Farsça evrensel tarih",
+            "Bâbürlü saray edebiyatı"
+          ],
+          "key_historians": [
+            "Beyhakī",
+            "Cüveynî",
+            "Reşîdüddin",
+            "Hândmîr",
+            "Mîrhând"
+          ]
         },
         "contraction": {
           "tr": "Kaçarlar döneminin ikinci yarısından itibaren İran'da klasik tarih yazıcılığı değişmeye başlamıştır. İngiltere ve Rusya'nın iç işlere müdahalesi ile devlette meşrutiyet süreci yaşanmıştır. Pehlevîler dönemi (1925-1979) ulusalcılık üzerinde kimlik inşasının gerçekleştirildiği dönem olmuştur. Milliyetçi tarihyazımı 'Batı övgüsü ve Arap karşıtlığı' ile İran'ın antik kültürünün yok olmasından Arapları ve İslam'ı sorumlu tutan bir yaklaşım geliştirmiştir. 1979 İslam Devrimi'nden itibaren üç ana akım baskın olmuştur: Sol/Marksist, milliyetçi ve İslamcı tarihyazımı.",
@@ -167,11 +193,34 @@
       "periods": {
         "formation": {
           "tr": "Mısır, İslam fetihlerinin ardından erken dönemde önemli bir ilim merkezi olmuştur. Özellikle Fustat ve İskenderiye'deki ilim halkaları, tarihî bilginin aktarımında rol oynamıştır. İbn Abdülhakem'in Fütûhu Mısr adlı eseri bu dönemin en önemli tarihî kaynağıdır.",
-          "en": "Egypt became an important center of learning early after the Islamic conquests. Scholarly circles in Fustat and Alexandria played a role in transmitting historical knowledge. Ibn ʿAbd al-Ḥakam's Futūḥ Miṣr is the most important historical source of this period."
+          "en": "Egypt became an important center of learning early after the Islamic conquests. Scholarly circles in Fustat and Alexandria played a role in transmitting historical knowledge. Ibn ʿAbd al-Ḥakam's Futūḥ Miṣr is the most important historical source of this period.",
+          "key_themes": [
+            "Kıptî-Arap kültür geçişi",
+            "Fütûhat edebiyatı",
+            "Erken İskenderiye geleneği"
+          ],
+          "key_historians": [
+            "İbnü'l-Mukaffa",
+            "Kindî",
+            "İbn Abdülhakem"
+          ]
         },
         "development": {
           "tr": "Memlük dönemi, Mısır tarihyazımının altın çağıdır. Kahire, İslam dünyasının en büyük tarihyazım merkezi haline gelmiştir. İbn Tağrîberdî, Makrîzî, Kalkaşendî ve Süyûtî gibi tarihçiler devasa biyografik ve kronolojik eserler kaleme almışlardır.",
-          "en": "The Mamluk period represents the golden age of Egyptian historiography. Cairo became the greatest historiographical center of the Islamic world. Historians such as Ibn Taghrībirdī, al-Maqrīzī, al-Qalqashandī, and al-Suyūṭī authored enormous biographical and chronological works."
+          "en": "The Mamluk period represents the golden age of Egyptian historiography. Cairo became the greatest historiographical center of the Islamic world. Historians such as Ibn Taghrībirdī, al-Maqrīzī, al-Qalqashandī, and al-Suyūṭī authored enormous biographical and chronological works.",
+          "key_themes": [
+            "Eyyûbî-Memlük saray tarihçiliği",
+            "Biyografik ansiklopediler",
+            "Kahire medrese sistemi",
+            "Hıtat geleneği"
+          ],
+          "key_historians": [
+            "İbn Hallikân",
+            "Makrîzî",
+            "İbn Tağrîberdî",
+            "Süyûtî",
+            "Kalkaşendî"
+          ]
         },
         "contraction": {
           "tr": "Mısır tarihçiliğinde modern daralmanın en önemli sebebi Fransız işgali ile başlayan Batı işgal ve tahakkümüdür. Kavalalı Mehmed Ali Paşa dönemi (1805-1848) modern okulların açıldığı, Batı'ya öğrenci gönderildiği bir sürece öncülük etmiştir. Yüzyılın ikinci yarısında Kavalalı'yı merkeze alan 'Recebî Ekolu' oluşmuştur. Firavunlar dönemine odaklanma, İslam dönemi birikimini atlayarak arkaik dönemlere geçme tasavvurunu yansıtmıştır. 1952 darbesi sonrasında Nasır, 'yeni bir tarih kurgusuna' ihtiyaç duymuş ve Felsefetü's-Sevre kitabıyla tarihçilere 'yeni bir ulus' oluşturma vazifesi yüklemiştir.",
@@ -249,11 +298,34 @@
       "periods": {
         "formation": {
           "tr": "Hint alt kıtasında İslam tarihyazımının teşekkül dönemi, Gazneli Mahmud'un fetihleriyle başlamıştır. Bîrûnî'nin Kitâbü'l-Hind'i, bu havzadaki ilk kapsamlı tarihî eserdir ve karşılaştırmalı medeniyet tarihi yaklaşımıyla öncü bir konumdadır.",
-          "en": "The formation of Islamic historiography in the Indian subcontinent began with the conquests of Mahmud of Ghazni. al-Bīrūnī's Kitāb al-Hind is the first comprehensive historical work in this basin and a pioneer in its comparative civilizational approach."
+          "en": "The formation of Islamic historiography in the Indian subcontinent began with the conquests of Mahmud of Ghazni. al-Bīrūnī's Kitāb al-Hind is the first comprehensive historical work in this basin and a pioneer in its comparative civilizational approach.",
+          "key_themes": [
+            "Gazneli saray tarihçiliği",
+            "Arap-Fars sentezi",
+            "Erken Sind fetih anlatıları"
+          ],
+          "key_historians": [
+            "Bîrûnî",
+            "Beyhakī",
+            "Utbî"
+          ]
         },
         "development": {
           "tr": "Delhi Sultanlığı ve Bâbürlü İmparatorluğu dönemlerinde Hint alt kıtası zengin bir tarihyazım geleneği geliştirmiştir. Farsça tarihyazımı hâkim dil olmuştur. Ziyâüddîn Berenî, Ebü'l-Fazl ve Müstaid Hân gibi tarihçiler önemli eserler kaleme almışlardır.",
-          "en": "During the Delhi Sultanate and Mughal Empire, the Indian subcontinent developed a rich historiographical tradition. Persian was the dominant language. Historians such as Ḍiyāʾ al-Dīn Baranī, Abūʾl-Faḍl, and Mustaʿidd Khān authored significant works."
+          "en": "During the Delhi Sultanate and Mughal Empire, the Indian subcontinent developed a rich historiographical tradition. Persian was the dominant language. Historians such as Ḍiyāʾ al-Dīn Baranī, Abūʾl-Faḍl, and Mustaʿidd Khān authored significant works.",
+          "key_themes": [
+            "Delhi Sultanlığı kronik geleneği",
+            "Bâbürlü otobiyografi/hatırat",
+            "Farsça tarihyazımı hakimiyeti",
+            "Dakkan sultanlıkları"
+          ],
+          "key_historians": [
+            "Ziyâeddin Berenî",
+            "İsâmî",
+            "Bâbür",
+            "Ebü'l-Fazl",
+            "Firişte"
+          ]
         },
         "contraction": {
           "tr": "18. yüzyılın ikinci yarısından itibaren İngiliz sömürgeciliği Hint Alt Kıtası'nda manipülatif bir tarihyazımı sürecini başlatmıştır. Alexander Dow (1768) Hinduları 'yerliler', Müslümanları 'yabancı istilacılar' olarak konumlandırmıştır. James Mill (1817) Hindistan tarihini 'Antik Hindu, Müslüman Orta Çağ, Modern Britanya' olarak dönemlendirmiştir. Henry Miers Elliot bin yıllık Müslüman hakimiyetini 'karanlık çağ' olarak nitelendirmiştir. Bu kurgusal tarihyazımı dokuz asırlık Hindu-Müslüman birlikte yaşam arka planını parçalayarak Hinduları merkeze alan yeni bir tarih oluşturmuştur.",
@@ -308,11 +380,34 @@
       "periods": {
         "formation": {
           "tr": "Balkanlar havzasında teşekkül döneminde sistematik bir İslam tarihyazımından söz etmek güçtür. Bölgenin İslamlaşması daha geç dönemlerde gerçekleşmiştir.",
-          "en": "It is difficult to speak of systematic Islamic historiography in the Balkans basin during the formation period. The Islamization of the region occurred in later periods."
+          "en": "It is difficult to speak of systematic Islamic historiography in the Balkans basin during the formation period. The Islamization of the region occurred in later periods.",
+          "key_themes": [
+            "Bizans-Osmanlı geçiş dönemi",
+            "Erken Osmanlı gaza anlatıları",
+            "Aşıkpaşazâde geleneği"
+          ],
+          "key_historians": [
+            "Aşıkpaşazâde",
+            "Neşrî",
+            "Oruç Bey"
+          ]
         },
         "development": {
           "tr": "Osmanlı döneminde Balkanlar, imparatorluğun Avrupa kanadını oluşturmuş ve bu bölgede yetişen tarihçiler Osmanlı tarihyazımına önemli katkılarda bulunmuşlardır. Peçevî, Selanikli Mustafa Efendi ve Evliya Çelebi gibi isimler Balkan coğrafyası hakkında değerli eserler bırakmışlardır.",
-          "en": "During the Ottoman period, the Balkans formed the European wing of the empire, and historians raised in this region made important contributions to Ottoman historiography. Peçevī, Selānikī Muṣṭafā Efendi, and Evliyā Çelebi left valuable works about the Balkan geography."
+          "en": "During the Ottoman period, the Balkans formed the European wing of the empire, and historians raised in this region made important contributions to Ottoman historiography. Peçevī, Selānikī Muṣṭafā Efendi, and Evliyā Çelebi left valuable works about the Balkan geography.",
+          "key_themes": [
+            "Osmanlı resmî tarihçiliği (vekâyinâme)",
+            "Şehnâmecilik",
+            "Münşeat geleneği",
+            "Naîmâ-Râşid ekolü"
+          ],
+          "key_historians": [
+            "Hoca Saadeddin",
+            "Kâtib Çelebi",
+            "Naîmâ",
+            "Evliya Çelebi",
+            "Mütercim Âsım"
+          ]
         },
         "contraction": {
           "tr": "19. yüzyılda Balkanlarda uluslaşma sürecinde tarihçilik, geçmişi anlamak değil ulusal hareketi meşrulaştırmak ve ulus-kimlik inşa etmek için bir araç olarak görülmüştür. Yunan tarih ders kitaplarında 'Tourkokratia' (Türk egemenliği) en kötü 'Barbar' egemenliği olarak sunulmuştur. Bulgar milli tarihyazımı Türk kökenini sulandırarak Osmanlı dönemini 'karanlık çağ' olarak konumlandırmıştır. Sırp tarihyazımında romantik milliyetçi, Marksist ve post-romantik milliyetçi ekoller gelişmiştir. Boşnaklar Orta Çağ Bosna Krallığı ve İslam'a geçiş sürecini kimlik yapıtaşı olarak kullanmıştır. Arnavutluk'ta 'Türk işgali' ve 'Zorla İslamlaştırma' klişeleri sivriltilmiştir.",
@@ -381,11 +476,32 @@
       "periods": {
         "formation": {
           "tr": "Endülüs Emevî Devleti döneminde İberya yarımadasında özgün bir İslam tarihyazım geleneği oluşmuştur. İbn Habîb, Ahmed er-Râzî ve İbn Kūtiyye bu geleneğin öncüleridir.",
-          "en": "During the Umayyad Emirate and Caliphate of Córdoba, a distinctive Islamic historiographical tradition formed on the Iberian Peninsula. Ibn Ḥabīb, Aḥmad al-Rāzī, and Ibn al-Qūṭiyya were the pioneers of this tradition."
+          "en": "During the Umayyad Emirate and Caliphate of Córdoba, a distinctive Islamic historiographical tradition formed on the Iberian Peninsula. Ibn Ḥabīb, Aḥmad al-Rāzī, and Ibn al-Qūṭiyya were the pioneers of this tradition.",
+          "key_themes": [
+            "Emevî-Endülüs kimlik inşası",
+            "Doğu İslâm geleneğinden adaptasyon",
+            "Fetih anlatıları"
+          ],
+          "key_historians": [
+            "İbn Habîb",
+            "İbnü'l-Kûtıyye"
+          ]
         },
         "development": {
           "tr": "Endülüs tarihyazımı, İbn Hazm, İbn Beşküvâl, İbnü'l-Ebbâr ve Lisânüddîn İbnü'l-Hatîb gibi büyük tarihçilerle doruk noktasına ulaşmıştır. Bölgenin kültürel çoğulculuğu tarihyazımına zengin bir perspektif kazandırmıştır.",
-          "en": "Andalusian historiography reached its peak with great historians like Ibn Ḥazm, Ibn Bashkuwāl, Ibn al-Abbār, and Lisān al-Dīn Ibn al-Khaṭīb. The region's cultural pluralism lent a rich perspective to its historiography."
+          "en": "Andalusian historiography reached its peak with great historians like Ibn Ḥazm, Ibn Bashkuwāl, Ibn al-Abbār, and Lisān al-Dīn Ibn al-Khaṭīb. The region's cultural pluralism lent a rich perspective to its historiography.",
+          "key_themes": [
+            "Tavâif-i Mülûk dönemi tarihçiliği",
+            "Merînî-Nasrî saray kronikçiliği",
+            "İber-İslâm biyografik gelenekleri"
+          ],
+          "key_historians": [
+            "İbn Hazm",
+            "İbn Hayyân",
+            "İbn Bessâm",
+            "İbnü'l-Hatîb",
+            "Makkarî"
+          ]
         },
         "contraction": {
           "tr": "Reconquista (1492) sonrası İslam tarihyazımı geleneği Endülüs'te sona ermiştir. Morisko sürgünleri ile son bağlar kopmuş, İslam dönemi Endülüs'e 'işgal dönemi' çerçevesinden bakılmıştır. 19-20. yüzyılda oryantalist araştırmacılar tarafından yeniden keşfedilmiştir.",
@@ -408,11 +524,31 @@
       "periods": {
         "formation": {
           "tr": "Mekke ve Medine merkezli erken dönem tarihyazımı, siyer-meğâzî geleneğinin doğduğu coğrafyadır.",
-          "en": "Early historiography centered in Mecca and Medina is the birthplace of the sīra-maghāzī tradition."
+          "en": "Early historiography centered in Mecca and Medina is the birthplace of the sīra-maghāzī tradition.",
+          "key_themes": [
+            "Siyer ve meğâzî geleneği",
+            "Ensâb edebiyatı",
+            "Mekke-Medine merkezli ilk tarihyazımı"
+          ],
+          "key_historians": [
+            "İbn İshâk",
+            "Vâkıdî",
+            "İbn Sa'd"
+          ]
         },
         "development": {
           "tr": "Hac yolculukları ve ilim seyahatleri sayesinde Arabistan yarımadası, İslam dünyasının farklı havzalarından gelen tarihçilerin buluşma noktası olmuştur.",
-          "en": "Through pilgrimage journeys and scholarly travels, the Arabian Peninsula became a meeting point for historians from different basins of the Islamic world."
+          "en": "Through pilgrimage journeys and scholarly travels, the Arabian Peninsula became a meeting point for historians from different basins of the Islamic world.",
+          "key_themes": [
+            "Harem-i Şerif tarihçiliği",
+            "Hac yolu güzergâhları",
+            "Yemen yerel tarihleri"
+          ],
+          "key_historians": [
+            "Fâkihî",
+            "Fâsî",
+            "İbn Fehd"
+          ]
         },
         "contraction": {
           "tr": "Arap Yarımadası'nda 19-20. yüzyılda Vehhâbî hareketi ve Suudi devlet inşası ile tarihyazımı yeni bir çerçeveye girmiştir. Geleneksel İslami tarihyazımı ile ulusal tarih anlatısı arasında gerilim yaşanmıştır.",
@@ -454,11 +590,31 @@
       "periods": {
         "formation": {
           "tr": "Mağrib havzasında İslam tarihyazımının teşekkülü, Kayrevân merkezli ilim halkalarıyla başlamıştır.",
-          "en": "The formation of Islamic historiography in the Maghreb basin began with scholarly circles centered in Kairouan."
+          "en": "The formation of Islamic historiography in the Maghreb basin began with scholarly circles centered in Kairouan.",
+          "key_themes": [
+            "Berberî-Arap kültür etkileşimi",
+            "Kuzey Afrika fetih anlatıları",
+            "Kayrevân geleneği"
+          ],
+          "key_historians": [
+            "İbn Abdülhakem",
+            "Muhammed b. Yûsuf el-Varrâk"
+          ]
         },
         "development": {
           "tr": "İbn Haldûn'un Mukaddime'si bu havzanın en büyük tarihyazım katkısıdır. Tarih felsefesi alanında çığır açan bu eser, İslam tarihyazımının zirvelerinden biridir.",
-          "en": "Ibn Khaldūn's Muqaddima is the greatest historiographical contribution of this basin. This groundbreaking work in the philosophy of history is one of the pinnacles of Islamic historiography."
+          "en": "Ibn Khaldūn's Muqaddima is the greatest historiographical contribution of this basin. This groundbreaking work in the philosophy of history is one of the pinnacles of Islamic historiography.",
+          "key_themes": [
+            "Murâbıt/Muvahhid devlet tarihçiliği",
+            "İbn Haldûn ekolü",
+            "Fas sultanî tarih geleneği"
+          ],
+          "key_historians": [
+            "İbn Haldûn",
+            "İbn Ebî Zer'",
+            "İbn İzârî",
+            "Nâsırî"
+          ]
         },
         "contraction": {
           "tr": "Mağrib'de Fransız ve İspanyol sömürgeciliği ile geleneksel tarihyazımı büyük ölçüde kesintiye uğramıştır. Bağımsızlık sonrasında ulusal tarih anlatıları oluşturulmuştur.",
@@ -499,11 +655,30 @@
       "periods": {
         "formation": {
           "tr": "Türkistan havzasında erken dönem tarihyazımı, Mâverâünnehir'deki Arapça ve Farsça ilim geleneğiyle şekillenmiştir.",
-          "en": "Early historiography in the Turkestan basin was shaped by the Arabic and Persian scholarly tradition in Transoxiana."
+          "en": "Early historiography in the Turkestan basin was shaped by the Arabic and Persian scholarly tradition in Transoxiana.",
+          "key_themes": [
+            "Türk-İslâm sentezi",
+            "Sâmânî saray tarihçiliği",
+            "Erken Farsça-Türkçe geçiş"
+          ],
+          "key_historians": [
+            "Nerşahî",
+            "Gerdîzî"
+          ]
         },
         "development": {
           "tr": "Timûrlular döneminde Semerkant ve Herat, önemli tarihyazım merkezleri haline gelmiştir. Çağatayca tarih yazıcılığı da bu dönemde ortaya çıkmıştır.",
-          "en": "During the Timurid period, Samarkand and Herat became important historiographical centers. Chagatai Turkish historiography also emerged in this era."
+          "en": "During the Timurid period, Samarkand and Herat became important historiographical centers. Chagatai Turkish historiography also emerged in this era.",
+          "key_themes": [
+            "Timurlu saray tarihçiliği",
+            "Şeybânî/Özbek kronik geleneği",
+            "Çağatay Türkçesi tarihyazımı"
+          ],
+          "key_historians": [
+            "Şerefeddin Ali Yezdî",
+            "Mîrhând",
+            "Ebü'l-Gāzî Bahâdır Han"
+          ]
         },
         "contraction": {
           "tr": "Türkistan'da Rus ve Sovyet işgali ile İslami tarihyazımı büyük ölçüde bastırılmıştır. Sovyet dönemi Marksist tarihyazımı hâkim olmuş, bağımsızlık sonrasında milli tarih yeniden inşa sürecine girilmiştir.",

@@ -114,6 +114,13 @@ export interface BasinDynasty {
   period: string;
 }
 
+export interface BasinPeriodEntry {
+  tr: string;
+  en: string;
+  key_themes?: string[];
+  key_historians?: string[];
+}
+
 export interface Basin {
   id: string;
   havza_key: string;
@@ -121,9 +128,9 @@ export interface Basin {
   dynasties: BasinDynasty[];
   key_scholars_ids: string[];
   periods: {
-    formation: { tr: string; en: string };
-    development: { tr: string; en: string };
-    contraction: { tr: string; en: string };
+    formation: BasinPeriodEntry;
+    development: BasinPeriodEntry;
+    contraction: BasinPeriodEntry;
   };
   references: { citation: string; doi?: string }[];
 }

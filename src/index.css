@@ -1326,3 +1326,46 @@ a:hover { color: var(--accent-hover); }
   .period-filter-bar { gap: 4px; }
   .period-pill { padding: 4px 10px; font-size: 0.72rem; }
 }
+
+/* ===== THEME & HISTORIAN CHIPS (HistoriographyDetail) ===== */
+.hist-themes-section,
+.hist-historians-section { margin-top: 12px; }
+
+.theme-chips,
+.historian-chips {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px;
+}
+.theme-chip {
+  display: inline-flex; align-items: center;
+  padding: 4px 12px; border-radius: 16px;
+  border: 1.5px solid; background: transparent;
+  font-size: 0.78rem; font-weight: 600;
+  font-family: 'Crimson Pro', Georgia, serif;
+}
+.historian-chip {
+  display: inline-flex; align-items: center;
+  padding: 4px 12px; border-radius: 16px;
+  border: 1px solid; font-size: 0.8rem; font-weight: 500;
+  font-family: 'Crimson Pro', Georgia, serif;
+}
+
+/* ===== HISTORIOGRAPHY MAP ===== */
+.hist-map-container {
+  margin: 0 auto 24px; max-width: 960px;
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.hist-map-tooltip {
+  font-family: 'Crimson Pro', Georgia, serif !important;
+  font-size: 0.85rem !important;
+  border-radius: 8px !important;
+  padding: 6px 10px !important;
+}
+
+/* ===== CONTEXT LINK PERIOD (ScholarDetail) ===== */
+.context-link-period {
+  font-size: 0.78rem;
+  opacity: 0.85;
+}
+.context-link-period:hover { opacity: 1; }

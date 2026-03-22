@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSearchParams, Link } from 'react-router-dom';
 import * as d3 from 'd3';
 import { useAuthors, useWorks, useRelations } from '../hooks/useData';
-import { HAVZA_COLORS, HAVZA_ORDER, TYPE_COLORS } from '../utils/colors';
+import { HAVZA_COLORS, HAVZA_ORDER, TYPE_COLORS, PERIOD_COLORS, PERIOD_RANGES, getPeriodId } from '../utils/colors';
 
 interface HavzaStats {
   key: string;
@@ -175,6 +175,7 @@ export default function HavzaCompare() {
 
   const h1 = searchParams.get('h1') || HAVZA_ORDER[0];
   const h2 = searchParams.get('h2') || HAVZA_ORDER[1];
+  const activePeriod = searchParams.get('period') || '';
 
   const setH = (key: string, val: string) => {
     setSearchParams(prev => {
@@ -184,14 +185,36 @@ export default function HavzaCompare() {
     }, { replace: true });
   };
 
+  const setPeriod = (val: string) => {
+    setSearchParams(prev => {
+      const next = new URLSearchParams(prev);
+      if (val) next.set('period', val);
+      else next.delete('period');
+      return next;
+    }, { replace: true });
+  };
+
+  // Filter authors by period if set
+  const filteredAuthors = useMemo(() => {
+    if (!activePeriod || !PERIOD_RANGES[activePeriod]) return authors;
+    const [min, max] = PERIOD_RANGES[activePeriod];
+    return authors.filter(a => a.yuzyil && a.yuzyil >= min && a.yuzyil <= max);
+  }, [authors, activePeriod]);
+
+  const filteredWorks = useMemo(() => {
+    if (!activePeriod) return works;
+    const authorIds = new Set(filteredAuthors.map(a => a.author_id));
+    return works.filter(w => authorIds.has(w.author_id));
+  }, [works, filteredAuthors, activePeriod]);
+
   const slugToHavza = useMemo(() => {
     const m = new Map<string, string>();
-    for (const a of authors) if (a.dia_slug) m.set(a.dia_slug, a.havza);
+    for (const a of filteredAuthors) if (a.dia_slug) m.set(a.dia_slug, a.havza);
     return m;
-  }, [authors]);
+  }, [filteredAuthors]);
 
-  const stats1 = useMemo(() => computeStats(h1, authors, works, relations, slugToHavza), [h1, authors, works, relations, slugToHavza]);
-  const stats2 = useMemo(() => computeStats(h2, authors, works, relations, slugToHavza), [h2, authors, works, relations, slugToHavza]);
+  const stats1 = useMemo(() => computeStats(h1, filteredAuthors, filteredWorks, relations, slugToHavza), [h1, filteredAuthors, filteredWorks, relations, slugToHavza]);
+  const stats2 = useMemo(() => computeStats(h2, filteredAuthors, filteredWorks, relations, slugToHavza), [h2, filteredAuthors, filteredWorks, relations, slugToHavza]);
 
   // Century distribution for mirror chart
   const centuryLabels = useMemo(() => {
@@ -246,6 +269,26 @@ export default function HavzaCompare() {
             ))}
           </select>
         </div>
+      </div>
+
+      {/* Period Filter */}
+      <div className="period-filter-bar" style={{ justifyContent: 'center' }}>
+        <button
+          className={`period-pill ${!activePeriod ? 'period-pill-active' : ''}`}
+          onClick={() => setPeriod('')}
+        >
+          {t('common.all')}
+        </button>
+        {Object.entries(PERIOD_COLORS).map(([pid, color]) => (
+          <button
+            key={pid}
+            className={`period-pill ${activePeriod === pid ? 'period-pill-active' : ''}`}
+            style={activePeriod === pid ? { background: color, borderColor: color } : { borderColor: color, color }}
+            onClick={() => setPeriod(activePeriod === pid ? '' : pid)}
+          >
+            {t(`periods.${pid}`)}
+          </button>
+        ))}
       </div>
 
       {/* Stats comparison cards */}

@@ -1,15 +1,18 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { useAuthors, useWorks, useHistoriography } from '../hooks/useData';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthors, useWorks, useHistoriography, useHavzaGeo } from '../hooks/useData';
 import { HAVZA_COLORS, getPeriodId } from '../utils/colors';
+import L from 'leaflet';
 
 export default function Historiography() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language === 'en' ? 'en' : 'tr';
+  const navigate = useNavigate();
   const { authors, loading: aLoad } = useAuthors();
   const { works, loading: wLoad } = useWorks();
   const { histData, loading: hLoad } = useHistoriography();
+  const { geo, loading: gLoad } = useHavzaGeo();
   const [viewMode, setViewMode] = useState<'cards' | 'map'>('cards');
 
   // Stats per basin
@@ -33,7 +36,7 @@ export default function Historiography() {
     return stats;
   }, [authors, works]);
 
-  if (aLoad || wLoad || hLoad) {
+  if (aLoad || wLoad || hLoad || gLoad) {
     return <div className="loading-screen">{t('common.loading')}</div>;
   }
 
@@ -63,7 +66,20 @@ export default function Historiography() {
         </button>
       </div>
 
+      {/* Map View */}
+      {viewMode === 'map' && geo && (
+        <HistMap
+          geo={geo}
+          basins={basins}
+          basinStats={basinStats}
+          lang={lang}
+          t={t}
+          onBasinClick={(id) => navigate(`/historiography/${id}`)}
+        />
+      )}
+
       {/* Basin Cards */}
+      {viewMode === 'cards' && (
       <section className="hist-basin-grid">
         {basins.map(basin => {
           const color = HAVZA_COLORS[basin.havza_key] || basin.color;
@@ -129,6 +145,7 @@ export default function Historiography() {
           );
         })}
       </section>
+      )}
 
       {/* Cross-link to Periodization */}
       <section className="hist-crosslink">
@@ -141,6 +158,88 @@ export default function Historiography() {
           <span className="crosslink-arrow">→</span>
         </Link>
       </section>
+    </div>
+  );
+}
+
+/* HistMap — Leaflet polygon map for basins */
+function HistMap({
+  geo,
+  basins,
+  basinStats,
+  lang,
+  t,
+  onBasinClick,
+}: {
+  geo: import('../hooks/useData').HavzaGeoCollection;
+  basins: { id: string; havza_key: string }[];
+  basinStats: Record<string, { scholars: number; sources: number }>;
+  lang: string;
+  t: (key: string) => string;
+  onBasinClick: (id: string) => void;
+}) {
+  const mapRef = useRef<HTMLDivElement>(null);
+  const leafletMap = useRef<L.Map | null>(null);
+
+  useEffect(() => {
+    if (!mapRef.current || leafletMap.current) return;
+
+    const map = L.map(mapRef.current, {
+      center: [30, 45],
+      zoom: 3,
+      minZoom: 2,
+      maxZoom: 6,
+      zoomControl: true,
+      attributionControl: false,
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd',
+    }).addTo(map);
+
+    // Add polygons
+    for (const feature of geo.features) {
+      const hKey = feature.properties.id;
+      const basin = basins.find(b => b.havza_key === hKey);
+      if (!basin) continue;
+
+      const color = HAVZA_COLORS[hKey] || '#666';
+      const st = basinStats[hKey] || { scholars: 0, sources: 0 };
+      const name = lang === 'en' ? feature.properties.name_en : feature.properties.name_tr;
+
+      // Leaflet expects [lat, lng] but GeoJSON is [lng, lat]
+      const latlngs = feature.geometry.coordinates[0].map(
+        (c: number[]) => [c[1], c[0]] as [number, number]
+      );
+
+      const polygon = L.polygon(latlngs, {
+        color,
+        weight: 2,
+        fillColor: color,
+        fillOpacity: 0.2,
+      }).addTo(map);
+
+      polygon.bindTooltip(
+        `<strong>${name}</strong><br/>${st.scholars} ${t('stats.scholars')} · ${st.sources} ${t('stats.sources')}`,
+        { sticky: true, className: 'hist-map-tooltip' }
+      );
+
+      polygon.on('click', () => onBasinClick(basin.id));
+      polygon.on('mouseover', () => polygon.setStyle({ fillOpacity: 0.45 }));
+      polygon.on('mouseout', () => polygon.setStyle({ fillOpacity: 0.2 }));
+    }
+
+    leafletMap.current = map;
+
+    return () => {
+      map.remove();
+      leafletMap.current = null;
+    };
+  }, [geo, basins, basinStats, lang, t, onBasinClick]);
+
+  return (
+    <div className="hist-map-container">
+      <div ref={mapRef} style={{ width: '100%', height: '450px', borderRadius: '12px' }} />
     </div>
   );
 }
