@@ -1576,3 +1576,120 @@ a:hover { color: var(--accent-hover); }
   .period-context-header { flex-wrap: wrap; }
   .period-context-range { margin-left: 0; width: 100%; }
 }
+
+/* ===== RADAR CHART (HavzaCompare) ===== */
+.radar-chart-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.radar-chart-svg {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+}
+.radar-legend {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.radar-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.radar-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ===== SIMILAR SCHOLARS (ScholarDetail) ===== */
+.similar-scholars-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  margin-top: 20px;
+}
+.similar-scholars-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+.similar-scholars-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ===== ERROR BOUNDARY ===== */
+.error-boundary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding: 24px;
+}
+.error-boundary-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  max-width: 440px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+.error-boundary-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+.error-boundary-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.error-boundary-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+.error-boundary-btn {
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  font-family: var(--font-body);
+  transition: all 0.15s;
+}
+.error-boundary-btn.primary {
+  background: var(--accent);
+  color: #fff;
+}
+.error-boundary-btn.primary:hover {
+  background: var(--accent-hover);
+}
+.error-boundary-btn.secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+.error-boundary-btn.secondary:hover {
+  background: var(--border-light);
+}

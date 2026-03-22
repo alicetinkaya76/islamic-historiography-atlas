@@ -5,6 +5,7 @@ import { useAuthors, useWorks, useRelations, useHistoriography, useCityCoords, u
 import { HAVZA_COLORS, PERIOD_COLORS, getPeriodId } from '../utils/colors';
 
 const MiniCityMap = lazy(() => import('../components/MiniCityMap'));
+const MiniTimeline = lazy(() => import('../components/MiniTimeline'));
 
 const PERIOD_IDS = ['formation', 'development', 'contraction'] as const;
 
@@ -56,20 +57,6 @@ export default function HistoriographyDetail() {
     }
     return result;
   }, [havzaAuthors, havzaWorks]);
-
-  // Century distribution
-  const centuryCounts = useMemo(() => {
-    const m: Record<number, number> = {};
-    for (const a of havzaAuthors) {
-      if (a.yuzyil) m[a.yuzyil] = (m[a.yuzyil] || 0) + 1;
-    }
-    return Object.entries(m)
-      .map(([c, n]) => ({ century: parseInt(c), count: n }))
-      .filter(e => e.century >= 7 && e.century <= 20)
-      .sort((a, b) => a.century - b.century);
-  }, [havzaAuthors]);
-
-  const maxCentury = Math.max(...centuryCounts.map(e => e.count), 1);
 
   // Cities
   const cityCounts = useMemo(() => {
@@ -249,28 +236,10 @@ export default function HistoriographyDetail() {
         })}
       </section>
 
-      {/* Century Distribution */}
-      <section className="dash-card">
-        <h2 className="card-title">{t('dashboard.century_overview')}</h2>
-        <div className="century-chart">
-          {centuryCounts.map(e => {
-            const pid = getPeriodId(e.century);
-            const barColor = pid ? PERIOD_COLORS[pid] : color;
-            return (
-              <div key={e.century} className="century-col">
-                <div className="century-bar-wrap">
-                  <div
-                    className="century-bar"
-                    style={{ height: `${(e.count / maxCentury) * 100}%`, background: barColor }}
-                    title={`${e.count}`}
-                  />
-                </div>
-                <div className="century-label">{e.century}</div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
+      {/* Century Distribution (Mini Timeline) */}
+      <Suspense fallback={null}>
+        <MiniTimeline authors={havzaAuthors} color={color} />
+      </Suspense>
 
       {/* Top Cities */}
       <section className="dash-card">

@@ -29,6 +29,20 @@ export default function ScholarDetail() {
     };
   }, [relations, scholar]);
 
+  // Similar scholars: same havza + same period, sorted by importance
+  const similarScholars = useMemo(() => {
+    if (!scholar) return [];
+    const pid = getPeriodId(scholar.yuzyil);
+    return authors
+      .filter(a =>
+        a.author_id !== scholar.author_id &&
+        a.havza === scholar.havza &&
+        getPeriodId(a.yuzyil) === pid
+      )
+      .sort((a, b) => (b.importance_score || 0) - (a.importance_score || 0))
+      .slice(0, 6);
+  }, [authors, scholar]);
+
   if (aLoading || wLoading || rLoading) return <div className="loading-screen">{t('common.loading')}</div>;
   if (!scholar) return <div className="loading-screen">{t('scholar_detail.no_data')}</div>;
 
@@ -204,6 +218,22 @@ export default function ScholarDetail() {
           </div>
         );
       })()}
+
+      {/* Similar Scholars */}
+      {similarScholars.length > 0 && (
+        <div className="similar-scholars-card">
+          <h3>{t('scholar_detail.similar_scholars')}</h3>
+          <div className="similar-scholars-grid">
+            {similarScholars.map(s => (
+              <Link key={s.author_id} to={`/scholars/${s.author_id}`} className="scholar-chip-mini">
+                <span className="chip-dot" style={{ background: HAVZA_COLORS[s.havza] }} />
+                <span>{s.meshur_isim}</span>
+                {s.vefat_yili_m && <span className="chip-year">ö. {s.vefat_yili_m}</span>}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Silsile Link */}
       {scholar.dia_slug && (scholarRelations.teachers.length > 0 || scholarRelations.students.length > 0) && (

@@ -387,6 +387,129 @@ function HavzaTable({ authors, works }: { authors: { havza: string; yuzyil: numb
   );
 }
 
+/* ─── Period × Type Heatmap ─── */
+function PeriodTypeHeatmap({ authors, works }: { authors: { author_id: string; yuzyil: number | null }[]; works: { author_id: string; eser_turu: string }[] }) {
+  const { t } = useTranslation();
+  const ref = useRef<SVGSVGElement>(null);
+
+  const { matrix, typeKeys } = useMemo(() => {
+    // Map author → period
+    const authorPeriod = new Map<string, string>();
+    for (const a of authors) {
+      const c = a.yuzyil;
+      if (!c) continue;
+      let pid = '';
+      if (c >= 7 && c <= 10) pid = 'formation';
+      else if (c >= 11 && c <= 18) pid = 'development';
+      else if (c >= 19) pid = 'contraction';
+      if (pid) authorPeriod.set(a.author_id, pid);
+    }
+
+    // Count works per period × type
+    const counts: Record<string, Record<string, number>> = {};
+    const typeSet = new Set<string>();
+    for (const w of works) {
+      const pid = authorPeriod.get(w.author_id);
+      if (!pid) continue;
+      typeSet.add(w.eser_turu);
+      if (!counts[pid]) counts[pid] = {};
+      counts[pid][w.eser_turu] = (counts[pid][w.eser_turu] || 0) + 1;
+    }
+
+    // Sort types by total count desc, top 12
+    const typeTotals = Array.from(typeSet).map(tp => ({
+      type: tp,
+      total: PERIOD_KEYS_STAT.reduce((s, pid) => s + (counts[pid]?.[tp] || 0), 0),
+    })).sort((a, b) => b.total - a.total).slice(0, 12);
+
+    const tk = typeTotals.map(t => t.type);
+    const rows: { period: string; type: string; count: number }[] = [];
+    for (const pid of PERIOD_KEYS_STAT) {
+      for (const tp of tk) {
+        rows.push({ period: pid, type: tp, count: counts[pid]?.[tp] || 0 });
+      }
+    }
+    return { matrix: rows, typeKeys: tk };
+  }, [authors, works]);
+
+  useEffect(() => {
+    if (!ref.current || !matrix.length) return;
+    const svg = d3.select(ref.current);
+    svg.selectAll('*').remove();
+
+    const margin = { top: 50, right: 30, bottom: 20, left: 160 };
+    const cellW = 140;
+    const cellH = 32;
+    const width = margin.left + PERIOD_KEYS_STAT.length * cellW + margin.right;
+    const height = margin.top + typeKeys.length * cellH + margin.bottom;
+
+    svg.attr('viewBox', `0 0 ${width} ${height}`).attr('width', '100%').attr('height', height);
+    const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+    const maxCount = Math.max(...matrix.map(m => m.count), 1);
+    const colorScale = d3.scaleSequential(d3.interpolateBlues).domain([0, maxCount]);
+
+    // Column headers (periods)
+    PERIOD_KEYS_STAT.forEach((pk, i) => {
+      g.append('text')
+        .attr('x', i * cellW + cellW / 2)
+        .attr('y', -12)
+        .attr('text-anchor', 'middle')
+        .attr('font-size', 12)
+        .attr('font-weight', 600)
+        .attr('fill', PERIOD_COLORS[pk])
+        .attr('font-family', "'Crimson Pro', Georgia, serif")
+        .text(t(`periods.${pk}`));
+    });
+
+    // Row labels (types)
+    typeKeys.forEach((tp, j) => {
+      g.append('text')
+        .attr('x', -8)
+        .attr('y', j * cellH + cellH / 2 + 1)
+        .attr('text-anchor', 'end')
+        .attr('dominant-baseline', 'middle')
+        .attr('font-size', 10.5)
+        .attr('fill', TYPE_COLORS[tp] || '#666')
+        .attr('font-weight', 600)
+        .text(t(`source_types.${tp}`));
+    });
+
+    // Cells
+    for (const m of matrix) {
+      const i = PERIOD_KEYS_STAT.indexOf(m.period as typeof PERIOD_KEYS_STAT[number]);
+      const j = typeKeys.indexOf(m.type);
+      if (i < 0 || j < 0) continue;
+
+      g.append('rect')
+        .attr('x', i * cellW + 2)
+        .attr('y', j * cellH + 2)
+        .attr('width', cellW - 4)
+        .attr('height', cellH - 4)
+        .attr('rx', 4)
+        .attr('fill', m.count > 0 ? colorScale(m.count) : 'var(--bg-secondary, #F5F0EB)')
+        .attr('stroke', 'var(--border, #E2D9CE)')
+        .attr('stroke-width', 0.5);
+
+      g.append('text')
+        .attr('x', i * cellW + cellW / 2)
+        .attr('y', j * cellH + cellH / 2 + 1)
+        .attr('text-anchor', 'middle')
+        .attr('dominant-baseline', 'middle')
+        .attr('font-size', 12)
+        .attr('font-weight', m.count > 0 ? 700 : 400)
+        .attr('fill', m.count > maxCount * 0.5 ? '#fff' : m.count > 0 ? '#3E2F1C' : '#BCAB99')
+        .text(m.count > 0 ? m.count.toLocaleString() : '—');
+    }
+  }, [matrix, typeKeys, t]);
+
+  return (
+    <div className="stat-chart-wrap" style={{ overflowX: 'auto' }}>
+      <svg ref={ref} />
+    </div>
+  );
+}
+
 /* ─── Main Statistics Page ─── */
 export default function Statistics() {
   const { t } = useTranslation();
@@ -449,6 +572,12 @@ export default function Statistics() {
       <section className="stat-section">
         <h2 className="stat-section-title">{t('statistics.period_havza_heatmap')}</h2>
         <PeriodHavzaHeatmap authors={authors} />
+      </section>
+
+      {/* Period × Type Heatmap */}
+      <section className="stat-section">
+        <h2 className="stat-section-title">{t('statistics.period_type_heatmap')}</h2>
+        <PeriodTypeHeatmap authors={authors} works={works} />
       </section>
 
       {/* Top Cities */}

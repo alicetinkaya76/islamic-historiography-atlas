@@ -165,6 +165,133 @@ function MirrorBarChart({
   return <svg ref={ref} className="stat-chart-svg" />;
 }
 
+/* ── Radar Chart Compare Component ── */
+function RadarCompare({
+  stats1,
+  stats2,
+  c1,
+  c2,
+  h1Label,
+  h2Label,
+}: {
+  stats1: HavzaStats;
+  stats2: HavzaStats;
+  c1: string;
+  c2: string;
+  h1Label: string;
+  h2Label: string;
+}) {
+  const { t } = useTranslation();
+  const ref = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const svg = d3.select(ref.current);
+    svg.selectAll('*').remove();
+
+    const size = 340;
+    const cx = size / 2;
+    const cy = size / 2;
+    const radius = size / 2 - 55;
+
+    svg.attr('viewBox', `0 0 ${size} ${size}`);
+    const g = svg.append('g');
+
+    // Axes: scholars, sources, relations (teachers+students), cities, dia match
+    const axes = [
+      { key: 'scholars', label: t('stats.scholars'), v1: stats1.scholars, v2: stats2.scholars },
+      { key: 'sources', label: t('stats.sources'), v1: stats1.works, v2: stats2.works },
+      { key: 'relations', label: t('stats.relations'), v1: stats1.teachers + stats1.students, v2: stats2.teachers + stats2.students },
+      { key: 'cities', label: t('map.cities'), v1: stats1.cities.length, v2: stats2.cities.length },
+      { key: 'dia', label: t('statistics.dia_ratio'), v1: stats1.diaMatch, v2: stats2.diaMatch },
+    ];
+
+    const n = axes.length;
+    const angleStep = (2 * Math.PI) / n;
+
+    // Normalize to [0, 1]
+    const maxVals = axes.map(a => Math.max(a.v1, a.v2, 1));
+    const norm1 = axes.map((a, i) => a.v1 / maxVals[i]);
+    const norm2 = axes.map((a, i) => a.v2 / maxVals[i]);
+
+    // Grid circles
+    for (let level = 0.25; level <= 1; level += 0.25) {
+      const points = Array.from({ length: n + 1 }, (_, i) => {
+        const angle = i * angleStep - Math.PI / 2;
+        return `${cx + Math.cos(angle) * radius * level},${cy + Math.sin(angle) * radius * level}`;
+      });
+      g.append('polygon')
+        .attr('points', points.join(' '))
+        .attr('fill', 'none')
+        .attr('stroke', 'var(--border, #E2D9CE)')
+        .attr('stroke-width', 0.5);
+    }
+
+    // Axis lines + labels
+    axes.forEach((a, i) => {
+      const angle = i * angleStep - Math.PI / 2;
+      const x2 = cx + Math.cos(angle) * radius;
+      const y2 = cy + Math.sin(angle) * radius;
+      g.append('line')
+        .attr('x1', cx).attr('y1', cy)
+        .attr('x2', x2).attr('y2', y2)
+        .attr('stroke', 'var(--border, #E2D9CE)')
+        .attr('stroke-width', 0.5);
+
+      const lx = cx + Math.cos(angle) * (radius + 20);
+      const ly = cy + Math.sin(angle) * (radius + 20);
+      g.append('text')
+        .attr('x', lx).attr('y', ly)
+        .attr('text-anchor', 'middle')
+        .attr('dominant-baseline', 'middle')
+        .attr('font-size', 10)
+        .attr('fill', 'var(--text-muted, #9B8C7E)')
+        .attr('font-family', "'Crimson Pro', Georgia, serif")
+        .text(a.label);
+    });
+
+    // Draw polygon for each dataset
+    function drawPolygon(norms: number[], color: string) {
+      const points = norms.map((v, i) => {
+        const angle = i * angleStep - Math.PI / 2;
+        return `${cx + Math.cos(angle) * radius * v},${cy + Math.sin(angle) * radius * v}`;
+      });
+      g.append('polygon')
+        .attr('points', points.join(' '))
+        .attr('fill', color)
+        .attr('fill-opacity', 0.15)
+        .attr('stroke', color)
+        .attr('stroke-width', 2);
+
+      // Dots
+      norms.forEach((v, i) => {
+        const angle = i * angleStep - Math.PI / 2;
+        g.append('circle')
+          .attr('cx', cx + Math.cos(angle) * radius * v)
+          .attr('cy', cy + Math.sin(angle) * radius * v)
+          .attr('r', 3.5)
+          .attr('fill', color)
+          .attr('stroke', '#fff')
+          .attr('stroke-width', 1);
+      });
+    }
+
+    drawPolygon(norm1, c1);
+    drawPolygon(norm2, c2);
+
+  }, [stats1, stats2, c1, c2, t]);
+
+  return (
+    <div className="radar-chart-wrap">
+      <svg ref={ref} className="radar-chart-svg" />
+      <div className="radar-legend">
+        <span className="radar-legend-item"><span className="radar-legend-dot" style={{ background: c1 }} />{h1Label}</span>
+        <span className="radar-legend-item"><span className="radar-legend-dot" style={{ background: c2 }} />{h2Label}</span>
+      </div>
+    </div>
+  );
+}
+
 /* ── Main Component ── */
 export default function HavzaCompare() {
   const { t } = useTranslation();
@@ -367,6 +494,12 @@ export default function HavzaCompare() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Radar Chart Comparison */}
+      <section className="stat-section">
+        <h2 className="stat-section-title">{t('compare.radar_title')}</h2>
+        <RadarCompare stats1={stats1} stats2={stats2} c1={c1} c2={c2} h1Label={t(`havza_names.${h1}`)} h2Label={t(`havza_names.${h2}`)} />
       </section>
     </div>
   );

@@ -1,26 +1,49 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, type ComponentType } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 
 // Eager load: Dashboard (landing page)
 import Dashboard from './pages/Dashboard';
 
-// Lazy load: all other pages for code splitting
-const ScholarList = lazy(() => import('./pages/ScholarList'));
-const ScholarDetail = lazy(() => import('./pages/ScholarDetail'));
-const SourceList = lazy(() => import('./pages/SourceList'));
-const SourceDetail = lazy(() => import('./pages/SourceDetail'));
-const MapView = lazy(() => import('./pages/MapView'));
-const HavzaDetail = lazy(() => import('./pages/HavzaDetail'));
-const NetworkView = lazy(() => import('./pages/NetworkView'));
-const TimelineView = lazy(() => import('./pages/TimelineView'));
-const About = lazy(() => import('./pages/About'));
-const Statistics = lazy(() => import('./pages/Statistics'));
-const SilsileView = lazy(() => import('./pages/SilsileView'));
-const HavzaCompare = lazy(() => import('./pages/HavzaCompare'));
-const Periodization = lazy(() => import('./pages/Periodization'));
-const Historiography = lazy(() => import('./pages/Historiography'));
-const HistoriographyDetail = lazy(() => import('./pages/HistoriographyDetail'));
+/**
+ * Retry wrapper for dynamic imports.
+ * When a chunk fails to load (stale hash after deploy), reload once to get fresh assets.
+ * Prevents the "Failed to fetch dynamically imported module" error.
+ */
+function lazyRetry(factory: () => Promise<{ default: ComponentType<unknown> }>) {
+  return lazy(() =>
+    factory().catch((err) => {
+      // Only reload once per session to avoid infinite loops
+      const reloadKey = 'itta-chunk-reload';
+      const hasReloaded = sessionStorage.getItem(reloadKey);
+      if (!hasReloaded) {
+        sessionStorage.setItem(reloadKey, '1');
+        window.location.reload();
+        // Return a dummy component while reloading
+        return { default: () => null } as { default: ComponentType<unknown> };
+      }
+      // If already reloaded and still failing, propagate the error
+      throw err;
+    })
+  );
+}
+
+// Lazy load with retry: all other pages for code splitting
+const ScholarList = lazyRetry(() => import('./pages/ScholarList'));
+const ScholarDetail = lazyRetry(() => import('./pages/ScholarDetail'));
+const SourceList = lazyRetry(() => import('./pages/SourceList'));
+const SourceDetail = lazyRetry(() => import('./pages/SourceDetail'));
+const MapView = lazyRetry(() => import('./pages/MapView'));
+const HavzaDetail = lazyRetry(() => import('./pages/HavzaDetail'));
+const NetworkView = lazyRetry(() => import('./pages/NetworkView'));
+const TimelineView = lazyRetry(() => import('./pages/TimelineView'));
+const About = lazyRetry(() => import('./pages/About'));
+const Statistics = lazyRetry(() => import('./pages/Statistics'));
+const SilsileView = lazyRetry(() => import('./pages/SilsileView'));
+const HavzaCompare = lazyRetry(() => import('./pages/HavzaCompare'));
+const Periodization = lazyRetry(() => import('./pages/Periodization'));
+const Historiography = lazyRetry(() => import('./pages/Historiography'));
+const HistoriographyDetail = lazyRetry(() => import('./pages/HistoriographyDetail'));
 
 function SuspenseWrap({ children }: { children: React.ReactNode }) {
   return (
