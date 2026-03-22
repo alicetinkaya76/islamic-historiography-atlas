@@ -164,7 +164,54 @@
       "century_min": 19,
       "century_max": 21,
       "color": "#E65100",
-      "schools": [],
+      "schools": [
+        {
+          "id": "ottoman_modernist",
+          "key_scholars_ids": [
+            "AU_02234",
+            "AU_02237",
+            "AU_02238"
+          ],
+          "tr": {
+            "name": "Osmanlı Modernist Ekolü",
+            "desc": "19. yüzyıl Osmanlı tarih yazıcılığında modern yöntemlerin benimsenmesi; biyografik ansiklopediler, arşiv temelli çalışmalar ve Batılı tarihyazım metodolojisinin İslam tarihi malzemesine uygulanması."
+          },
+          "en": {
+            "name": "Ottoman Modernist School",
+            "desc": "Adoption of modern methods in 19th-century Ottoman historiography; biographical encyclopedias, archival studies, and application of Western methodology to Islamic historical materials."
+          }
+        },
+        {
+          "id": "indian_revivalist",
+          "key_scholars_ids": [
+            "AU_00786",
+            "AU_01107"
+          ],
+          "tr": {
+            "name": "Hint İhyâ Ekolü",
+            "desc": "Sömürge döneminde Hint Alt Kıtası'nda İslam tarih yazıcılığının yeniden canlandırılması; hadis ve siyer araştırmalarının ihyâsı, oryantalizm eleştirisi."
+          },
+          "en": {
+            "name": "Indian Revival School",
+            "desc": "Revival of Islamic historiography in the Indian Subcontinent during the colonial period; renewal of hadith and sira studies, critique of Orientalism."
+          }
+        },
+        {
+          "id": "maghreb_nationalist",
+          "key_scholars_ids": [
+            "AU_01848",
+            "AU_01847"
+          ],
+          "tr": {
+            "name": "Mağrib Milliyetçi Ekolü",
+            "desc": "Kuzey Afrika'da sömürge karşıtı hareketlerle birlikte gelişen tarih yazıcılığı; yerel hanedanların ve İslam medeniyetinin savunusu, bölgesel kimlik inşası."
+          },
+          "en": {
+            "name": "Maghreb Nationalist School",
+            "desc": "Historiography developing alongside anti-colonial movements in North Africa; defense of local dynasties and Islamic civilization, construction of regional identity."
+          }
+        }
+      ],
       "genres": [
         "modern_arastirma",
         "genel_tarih"

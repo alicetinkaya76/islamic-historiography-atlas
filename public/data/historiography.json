@@ -551,12 +551,18 @@
           ]
         },
         "contraction": {
-          "tr": "Arap Yarımadası'nda 19-20. yüzyılda Vehhâbî hareketi ve Suudi devlet inşası ile tarihyazımı yeni bir çerçeveye girmiştir. Geleneksel İslami tarihyazımı ile ulusal tarih anlatısı arasında gerilim yaşanmıştır.",
-          "en": "In the Arabian Peninsula during the 19th-20th centuries, the Wahhabi movement and Saudi state-building brought historiography into a new framework. Tension arose between traditional Islamic historiography and national historical narrative.",
+          "tr": "Arabistan havzasında 19. yüzyılda Vehhâbî hareketi ve Suûdî devletinin kuruluşuyla birlikte tarih yazıcılığı yeni bir yön kazanmıştır. Geleneksel ensâb (soy bilgisi) ve şehir tarihi türleri Necd merkezli bir siyasî anlatıya dönüşmüş, İbn Bişr'in Ünvânü'l-Mecd'i bu dönüşümün en önemli eseri olmuştur. 20. yüzyılda petrol zenginliği ve ulus-devlet inşası süreci, Hicaz bölgesinin tarihî mirasını Suûdî perspektifinden yeniden okuma çabasını beraberinde getirmiştir. Mekke ve Medine merkezli geleneksel tarih yazıcılığı ile Riyad merkezli modern ulusal tarih arasındaki gerilim bu dönemin belirleyici özelliğidir.",
+          "en": "In the Arabian basin, the Wahhabi movement and the founding of the Saudi state in the 19th century redirected historiography. Traditional genres like genealogy (ansab) and city histories were reshaped into a Najd-centered political narrative, with Ibn Bishr's Unwan al-Majd as the pivotal work. In the 20th century, oil wealth and nation-building drove efforts to reinterpret the Hijaz's historical heritage from a Saudi perspective. The tension between traditional Meccan-Medinan historiography and Riyadh-centered national history defines this period.",
           "key_themes": [
             "vehhabi_hareketi",
             "suudi_devlet_insasi",
             "ulusal_gelenek_gerilimi"
+          ],
+          "key_historians": [
+            "İbn Bişr",
+            "Eyüp Sabri Paşa",
+            "Hüseyin b. Gannam",
+            "Hafız Vehbe"
           ]
         }
       },
@@ -617,11 +623,19 @@
           ]
         },
         "contraction": {
-          "tr": "Mağrib'de Fransız ve İspanyol sömürgeciliği ile geleneksel tarihyazımı büyük ölçüde kesintiye uğramıştır. Bağımsızlık sonrasında ulusal tarih anlatıları oluşturulmuştur.",
-          "en": "In the Maghreb, French and Spanish colonialism largely disrupted traditional historiography. National historical narratives were constructed after independence.",
+          "tr": "Mağrib havzasında 19. yüzyılda Fransız sömürgeciliği, geleneksel tarih yazıcılığı geleneğini derinden sarsmıştır. Hâlid en-Nâsırî'nin el-İstikṣâ'sı ve Zeyyânî'nin eserleri, sömürge öncesi son büyük geleneksel tarih yazımları arasındadır. Sömürge döneminde Berber-Arap ayrımına dayalı oryantalist söylem, yerli tarih yazıcılığını marjinalleştirmiştir. Bağımsızlık sonrası dönemde Cezayir, Tunus ve Fas'ta milliyetçi tarih yazıcılığı gelişmiş; İslam medeniyetinin Mağrib'e katkıları yeniden keşfedilmiş, ancak Batılı metodoloji belirleyici kalmıştır.",
+          "en": "In the Maghreb basin, French colonialism profoundly disrupted traditional historiographical traditions in the 19th century. Khalid al-Nasiri's al-Istiqsa and Zayyani's works represent the last great pre-colonial histories. During the colonial period, Orientalist discourse based on the Berber-Arab divide marginalized indigenous historiography. After independence, nationalist historiography emerged in Algeria, Tunisia, and Morocco; Islamic civilization's contributions to the Maghreb were rediscovered, though Western methodology remained dominant.",
           "key_themes": [
             "fransiz_somurgeciligi",
-            "bagimsizlik_sonrasi_tarih"
+            "bagimsizlik_sonrasi_tarih",
+            "berber_arap_politikasi",
+            "oryantalizm_elestirisi"
+          ],
+          "key_historians": [
+            "Hâlid en-Nâsırî",
+            "Ebu'l-Kâsım ez-Zeyyânî",
+            "Mahmûd Makdîş",
+            "Ahmed en-Nâsırî"
           ]
         }
       },
@@ -681,12 +695,19 @@
           ]
         },
         "contraction": {
-          "tr": "Türkistan'da Rus ve Sovyet işgali ile İslami tarihyazımı büyük ölçüde bastırılmıştır. Sovyet dönemi Marksist tarihyazımı hâkim olmuş, bağımsızlık sonrasında milli tarih yeniden inşa sürecine girilmiştir.",
-          "en": "In Turkestan, Russian and Soviet occupation largely suppressed Islamic historiography. Soviet-era Marxist historiography became dominant, and after independence, a process of national history reconstruction began.",
+          "tr": "Türkistan havzasında 19. yüzyıldan itibaren Rus ve ardından Sovyet hâkimiyeti, İslam tarih yazıcılığını neredeyse tamamen bastırmıştır. Hokand Hanlığı'nın son dönem vakanüvisleri (Avaz Muhammad Attâr gibi) geleneksel hanedan tarihi türünü sürdürürken, Sovyet döneminde Marksist tarih yazımı dayatılmış ve İslam tarih geleneği 'feodal ideoloji' olarak itibarsızlaştırılmıştır. Bağımsızlık sonrasında (1991) Orta Asya cumhuriyetlerinde ulusal kimlik inşası çerçevesinde Timur, Bâbür ve yerel hanedanlar yeniden sahiplenilmiş, ancak İslam tarihyazım geleneğiyle organik bağ yeniden kurulamamıştır.",
+          "en": "In the Turkestan basin, Russian and then Soviet domination from the 19th century onwards nearly completely suppressed Islamic historiography. While late Khanate chroniclers (like Avaz Muhammad Attar) continued the traditional dynastic history genre, the Soviet period imposed Marxist historiography and discredited the Islamic historical tradition as 'feudal ideology.' After independence (1991), Central Asian republics reclaimed figures like Timur and Babur within nation-building frameworks, but the organic connection to the Islamic historiographical tradition has not been fully restored.",
           "key_themes": [
             "rus_sovyet_isgali",
             "marksist_tarihyazimi",
-            "bagimsizlik_sonrasi_insaa"
+            "bagimsizlik_sonrasi_insaa",
+            "ulusal_kimlik_yeniden_insasi"
+          ],
+          "key_historians": [
+            "Avaz Muhammad Attâr",
+            "Mirza Hüseyin Ali",
+            "Ahmed Dâniş",
+            "Abdürreşid İbrahim"
           ]
         }
       },

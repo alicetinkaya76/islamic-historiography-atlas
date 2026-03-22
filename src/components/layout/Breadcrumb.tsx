@@ -50,6 +50,13 @@ export default function Breadcrumb() {
     crumbs.push({ label: t('nav.silsile') });
   } else if (segments[0] === 'compare') {
     crumbs.push({ label: t('nav.compare') });
+  } else if (segments[0] === 'periodization') {
+    crumbs.push({ label: t('periodization.title') });
+  } else if (segments[0] === 'historiography') {
+    crumbs.push({ label: t('historiography.title'), path: segments.length > 1 ? '/historiography' : undefined });
+    if (params.id) {
+      crumbs.push({ label: t(`havza_names.${params.id}`) });
+    }
   }
 
   if (crumbs.length <= 1) return null;

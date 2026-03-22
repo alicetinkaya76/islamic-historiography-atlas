@@ -1351,10 +1351,7 @@ a:hover { color: var(--accent-hover); }
 
 /* ===== HISTORIOGRAPHY MAP ===== */
 .hist-map-container {
-  margin: 0 auto 24px; max-width: 960px;
-  border-radius: 12px; overflow: hidden;
-  border: 1px solid var(--border);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin: 0 auto 24px; max-width: 1060px;
 }
 .hist-map-tooltip {
   font-family: 'Crimson Pro', Georgia, serif !important;
@@ -1369,3 +1366,213 @@ a:hover { color: var(--accent-hover); }
   opacity: 0.85;
 }
 .context-link-period:hover { opacity: 1; }
+
+/* ===== MINI CITY MAP ===== */
+.mini-city-map {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+}
+.mini-city-map h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+.mini-city-tooltip {
+  font-family: 'Crimson Pro', Georgia, serif !important;
+  font-size: 0.82rem !important;
+  border-radius: 8px !important;
+  padding: 5px 9px !important;
+}
+
+/* ===== MINI TIMELINE ===== */
+.mini-timeline {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+}
+.mini-timeline h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.mini-timeline-svg { width: 100%; height: 80px; }
+
+/* ===== HAVZA PERIOD SUMMARY (HavzaDetail) ===== */
+.havza-period-summary {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.havza-period-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1.5px solid;
+  border-radius: 20px;
+  background: var(--bg-card);
+  text-decoration: none;
+  transition: all 0.15s;
+  font-size: 0.82rem;
+}
+.havza-period-pill:hover { background: var(--bg-secondary); transform: translateY(-1px); }
+.period-pill-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.period-pill-name { color: var(--text-secondary); font-weight: 500; }
+.period-pill-count { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; }
+.period-pill-arrow { color: var(--text-muted); font-size: 0.75rem; margin-left: 4px; }
+
+/* ===== HAVZA SCHOOLS (HavzaDetail) ===== */
+.havza-schools-list { display: flex; flex-direction: column; gap: 10px; }
+.havza-school-item {
+  border-left: 3px solid;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.havza-school-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.havza-school-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ===== HAVZA MINI NETWORK LEGEND ===== */
+.havza-net-legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-light);
+}
+.havza-net-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.havza-net-legend-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+/* ===== PERIOD CONTEXT CARD (ScholarDetail) ===== */
+.period-context-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-left: 3px solid;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  margin-top: 20px;
+}
+.period-context-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.period-context-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.period-context-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.period-context-title:hover { color: var(--accent); }
+.period-context-range {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+.period-context-summary {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ===== HIST MAP LEGEND (Historiography map mode) ===== */
+.hist-map-wrapper {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.hist-map-leaflet {
+  flex: 1;
+  height: 450px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.hist-map-legend {
+  width: 190px;
+  flex-shrink: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 12px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.hist-map-legend-title {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+.hist-map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all 0.15s;
+  font-family: var(--font-body);
+  text-align: left;
+  width: 100%;
+}
+.hist-map-legend-item:hover { background: var(--bg-secondary); }
+.hist-map-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.hist-map-legend-name { flex: 1; font-size: 0.8rem; color: var(--text-secondary); font-weight: 500; }
+.hist-map-legend-count { font-family: var(--font-display); font-size: 0.82rem; font-weight: 600; color: var(--text-primary); }
+
+/* ===== RESPONSIVE: HIST MAP + NEW COMPONENTS ===== */
+@media (max-width: 768px) {
+  .hist-map-wrapper { flex-direction: column; }
+  .hist-map-leaflet { height: 320px; }
+  .hist-map-legend { width: 100%; flex-direction: row; flex-wrap: wrap; gap: 4px; }
+  .hist-map-legend-title { width: 100%; }
+  .hist-map-legend-item { flex: 1; min-width: 130px; }
+  .havza-period-summary { gap: 6px; }
+  .havza-period-pill { padding: 5px 10px; font-size: 0.78rem; }
+  .period-pill-arrow { display: none; }
+  .period-context-header { flex-wrap: wrap; }
+  .period-context-range { margin-left: 0; width: 100%; }
+}
