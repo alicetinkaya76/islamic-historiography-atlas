@@ -13,6 +13,11 @@ export default defineConfig({
       includeAssets: ['favicon.svg', 'icons.svg'],
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        cleanupOutdatedCaches: true,
+        skipWaiting: true,
+        clientsClaim: true,
+        navigateFallback: 'index.html',
+        navigateFallbackDenylist: [/^\/api/, /\.json$/],
         runtimeCaching: [
           {
             urlPattern: /\/data\/.*\.json$/,
@@ -54,6 +59,17 @@ export default defineConfig({
               },
             },
           },
+          {
+            urlPattern: /^https:\/\/.*basemaps\.cartocdn\.com/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'carto-tile-cache',
+              expiration: {
+                maxEntries: 500,
+                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+              },
+            },
+          },
         ],
       },
       manifest: {
@@ -67,17 +83,17 @@ export default defineConfig({
         scope: '/islamic-historiography-atlas/',
         icons: [
           {
-            src: '/pwa-192x192.png',
+            src: 'pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/pwa-512x512.png',
+            src: 'pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png',
           },
           {
-            src: '/pwa-512x512.png',
+            src: 'pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable',

@@ -81,7 +81,8 @@
     "dia_link": "مادة DİA",
     "havza": "الحوض",
     "fields": "مجالات الاهتمام",
-    "no_data": "لا توجد بيانات"
+    "no_data": "لا توجد بيانات",
+    "similar_scholars": "مؤرخون مشابهون"
   },
   "source_detail": {
     "title": "اسم المصدر",
@@ -147,7 +148,8 @@
     "dia_ratio": "نسبة مطابقة DİA",
     "avg_century": "متوسط القرن",
     "century_range": "نطاق القرون",
-    "period_havza_heatmap": "التوزيع حسب الفترة والحوض"
+    "period_havza_heatmap": "التوزيع حسب الفترة والحوض",
+    "period_type_heatmap": "توزيع الفترة × نوع المصدر"
   },
   "about": {
     "title": "حول İTTA",
@@ -179,7 +181,8 @@
     "empty": "اختر مؤرخًا أعلاه لعرض سلسلة الشيخ والتلميذ"
   },
   "compare": {
-    "title": "مقارنة الأحواض"
+    "title": "مقارنة الأحواض",
+    "radar_title": "المقارنة متعددة الأبعاد"
   },
   "mobile": {
     "more": "المزيد",

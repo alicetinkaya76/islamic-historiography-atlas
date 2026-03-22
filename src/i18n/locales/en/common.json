@@ -81,7 +81,8 @@
     "dia_link": "DIA Entry",
     "havza": "Region",
     "fields": "Fields",
-    "no_data": "No data found"
+    "no_data": "No data found",
+    "similar_scholars": "Similar Scholars"
   },
   "source_detail": {
     "title": "Title",
@@ -147,7 +148,8 @@
     "dia_ratio": "DIA Match",
     "avg_century": "Avg. Century",
     "century_range": "Century Range",
-    "period_havza_heatmap": "Period × Basin Distribution"
+    "period_havza_heatmap": "Period × Basin Distribution",
+    "period_type_heatmap": "Period × Source Type Distribution"
   },
   "about": {
     "title": "About İTTA",
@@ -179,7 +181,8 @@
     "empty": "Select a scholar above to view their teacher–student chain"
   },
   "compare": {
-    "title": "Region Comparison"
+    "title": "Region Comparison",
+    "radar_title": "Multi-Dimensional Comparison"
   },
   "mobile": {
     "more": "More",
