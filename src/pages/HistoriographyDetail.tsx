@@ -126,6 +126,9 @@ export default function HistoriographyDetail() {
           const isOpen = openPeriod === pid;
           const periodColor = PERIOD_COLORS[pid];
           const text = basin.periods[pid]?.[lang as 'tr' | 'en'] || '';
+          const periodEntry = basin.periods[pid];
+          const keyThemes = periodEntry?.key_themes || [];
+          const keyHistorians = periodEntry?.key_historians || [];
           const dynasties = basin.dynasties.filter(d => d.period === pid);
           const scholars = scholarsByPeriod[pid] || [];
           const periodWorks = worksByPeriod[pid] || [];
@@ -149,6 +152,34 @@ export default function HistoriographyDetail() {
                 <div className="hist-accordion-body">
                   {/* Narrative Text */}
                   <p className="hist-narrative">{text}</p>
+
+                  {/* Key Themes */}
+                  {keyThemes.length > 0 && (
+                    <div className="hist-themes-section">
+                      <h4 className="hist-sub-title">{t('historiography.key_themes')}</h4>
+                      <div className="theme-chips">
+                        {keyThemes.map((theme, i) => (
+                          <span key={i} className="theme-chip" style={{ borderColor: periodColor, color: periodColor }}>
+                            {theme}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Key Historians (from enrichment) */}
+                  {keyHistorians.length > 0 && (
+                    <div className="hist-historians-section">
+                      <h4 className="hist-sub-title">{t('historiography.key_historians')}</h4>
+                      <div className="historian-chips">
+                        {keyHistorians.map((name, i) => (
+                          <span key={i} className="historian-chip" style={{ background: `${periodColor}15`, borderColor: periodColor }}>
+                            {name}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Dynasties */}
                   {dynasties.length > 0 && (

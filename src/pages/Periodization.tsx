@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuthors, useWorks, useRelations, usePeriods } from '../hooks/useData';
 import { PERIOD_COLORS, getPeriodId, HAVZA_COLORS } from '../utils/colors';
 import * as d3 from 'd3';
@@ -21,6 +21,20 @@ export default function Periodization() {
   const { periodsData, loading: pLoad } = usePeriods();
 
   const [expandedPeriod, setExpandedPeriod] = useState<string | null>(null);
+  const location = useLocation();
+  const periodRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  // Hash navigation: scroll to and expand target period
+  useEffect(() => {
+    const hash = location.hash.replace('#', '');
+    if (hash && ['formation', 'development', 'contraction'].includes(hash)) {
+      setExpandedPeriod(hash);
+      // Wait for render then scroll
+      setTimeout(() => {
+        periodRefs.current[hash]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }, [location.hash]);
 
   // Compute live stats per period
   const periodStats = useMemo(() => {
@@ -127,7 +141,7 @@ export default function Periodization() {
             .slice(0, 4);
 
           return (
-            <div key={p.id} className="period-card" style={{ borderColor: p.color }}>
+            <div key={p.id} id={p.id} ref={el => { periodRefs.current[p.id] = el; }} className="period-card" style={{ borderColor: p.color }}>
               <div className="period-card-header" style={{ background: `${p.color}10` }}>
                 <div className="period-card-dot" style={{ background: p.color }} />
                 <div>

@@ -49,7 +49,7 @@ export default function ScholarDetail() {
             {t(`havza_names.${scholar.havza}`)}
           </span>
           {getPeriodId(scholar.yuzyil) && (
-            <Link to="/periodization" className="detail-period-badge" style={{ background: PERIOD_COLORS[getPeriodId(scholar.yuzyil)!] }}>
+            <Link to={`/periodization#${getPeriodId(scholar.yuzyil)}`} className="detail-period-badge" style={{ background: PERIOD_COLORS[getPeriodId(scholar.yuzyil)!] }}>
               {t(`periods.${getPeriodId(scholar.yuzyil)}`)}
             </Link>
           )}
@@ -63,6 +63,11 @@ export default function ScholarDetail() {
           <Link to={`/historiography/${scholar.havza}`} className="context-link">
             {t('historiography.basin_writing')} →
           </Link>
+          {getPeriodId(scholar.yuzyil) === 'contraction' && (
+            <Link to={`/periodization#contraction`} className="context-link context-link-period">
+              {t('periods.contraction')} →
+            </Link>
+          )}
         </div>
       </header>
 

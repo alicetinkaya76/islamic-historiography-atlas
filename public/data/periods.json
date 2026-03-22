@@ -68,7 +68,69 @@
       "century_min": 11,
       "century_max": 18,
       "color": "#2E7D32",
-      "schools": [],
+      "schools": [
+        {
+          "id": "kahire_school",
+          "key_scholars_ids": [
+            "AU_00441",
+            "AU_00429",
+            "AU_00421"
+          ],
+          "tr": {
+            "name": "Kahire Ekolü",
+            "desc": "Eyyûbî ve Memlük saray tarihçiliği, biyografik ansiklopediler (İbn Hallikân, Makrîzî, Süyûtî) ve hıtat geleneğiyle öne çıkan Mısır merkezli tarih yazıcılığı."
+          },
+          "en": {
+            "name": "Cairo School",
+            "desc": "Egypt-centered historiography distinguished by Ayyubid and Mamluk court chronicles, biographical encyclopedias (Ibn Khallikān, al-Maqrīzī, al-Suyūṭī) and the khiṭaṭ tradition."
+          }
+        },
+        {
+          "id": "istanbul_school",
+          "key_scholars_ids": [
+            "AU_02201",
+            "AU_02202"
+          ],
+          "tr": {
+            "name": "İstanbul Ekolü",
+            "desc": "Osmanlı resmî vekâyinâme geleneği, şehnâmecilik, Hoca Saadeddin-Naîmâ-Râşid çizgisinde gelişen saray tarihçiliği ve münşeat edebiyatı."
+          },
+          "en": {
+            "name": "Istanbul School",
+            "desc": "Ottoman official chronicle tradition (vekāyināme), şehnāmecilik, and court historiography developing along the Hoca Saadeddin-Naʿīmā-Rāshid line."
+          }
+        },
+        {
+          "id": "delhi_school",
+          "key_scholars_ids": [
+            "AU_00773",
+            "AU_00746"
+          ],
+          "tr": {
+            "name": "Delhi Ekolü",
+            "desc": "Delhi Sultanlığı ve Bâbürlü saray tarihçiliği: Farsça hakimiyetinde kronikler, hatıratlar (Bâbürnâme) ve tabakat eserleri."
+          },
+          "en": {
+            "name": "Delhi School",
+            "desc": "Delhi Sultanate and Mughal court historiography: chronicles in Persian, memoirs (Bāburnāme), and ṭabaqāt works."
+          }
+        },
+        {
+          "id": "isfahan_school",
+          "key_scholars_ids": [
+            "AU_00026",
+            "AU_00016"
+          ],
+          "tr": {
+            "name": "İsfahan Ekolü",
+            "desc": "Selçuklu-İlhanlı-Safevî tarih yazıcılığı: Cüveynî, Reşîdüddin ve Mîrhând gibi büyük tarihçilerin Farsça evrensel tarih geleneği."
+          },
+          "en": {
+            "name": "Isfahan School",
+            "desc": "Seljuk-Ilkhanid-Safavid historiography: the Persian universal history tradition of great historians like Juvaynī, Rashīd al-Dīn, and Mīrkhwānd."
+          }
+        }
+      ],
       "genres": [
         "genel_tarih",
         "hanedan_tarihi",
@@ -76,7 +138,14 @@
         "cografya",
         "seyahatname"
       ],
-      "key_scholars_ids": [],
+      "key_scholars_ids": [
+        "AU_00441",
+        "AU_00421",
+        "AU_00026",
+        "AU_02201",
+        "AU_00773",
+        "AU_01897"
+      ],
       "tr": {
         "name": "Gelişim Dönemi",
         "subtitle": "11–18. Yüzyıl",
@@ -100,7 +169,13 @@
         "modern_arastirma",
         "genel_tarih"
       ],
-      "key_scholars_ids": [],
+      "key_scholars_ids": [
+        "AU_00786",
+        "AU_01848",
+        "AU_00125",
+        "AU_01671",
+        "AU_02056"
+      ],
       "tr": {
         "name": "Daralma, Dönüşüm ve Çeşitlenme",
         "subtitle": "19–20. Yüzyıl",

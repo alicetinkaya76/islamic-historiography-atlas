@@ -2,18 +2,23 @@ import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import Fuse from 'fuse.js';
-import { useAuthors, useWorks, type Author, type Work } from '../../hooks/useData';
-import { HAVZA_COLORS, TYPE_COLORS } from '../../utils/colors';
+import { useAuthors, useWorks, usePeriods, useHistoriography, type Author, type Work } from '../../hooks/useData';
+import { HAVZA_COLORS, TYPE_COLORS, PERIOD_COLORS } from '../../utils/colors';
 
 type ResultItem =
   | { kind: 'scholar'; data: Author }
-  | { kind: 'source'; data: Work };
+  | { kind: 'source'; data: Work }
+  | { kind: 'period'; data: { id: string; name: string; subtitle: string } }
+  | { kind: 'basin'; data: { id: string; havza_key: string; name: string } };
 
 export default function GlobalSearch() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language === 'en' ? 'en' : 'tr';
   const navigate = useNavigate();
   const { authors } = useAuthors();
   const { works } = useWorks();
+  const { periodsData } = usePeriods();
+  const { histData } = useHistoriography();
 
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
@@ -31,17 +36,51 @@ export default function GlobalSearch() {
     [works]
   );
 
+  // Build searchable period items
+  const periodItems = useMemo(() => {
+    if (!periodsData) return [];
+    return periodsData.periods.map(p => ({
+      id: p.id,
+      name: p[lang as 'tr' | 'en'].name,
+      subtitle: p[lang as 'tr' | 'en'].subtitle,
+    }));
+  }, [periodsData, lang]);
+
+  const fusePeriods = useMemo(
+    () => new Fuse(periodItems, { keys: ['name', 'subtitle'], threshold: 0.4, includeScore: true }),
+    [periodItems]
+  );
+
+  // Build searchable basin items
+  const basinItems = useMemo(() => {
+    if (!histData) return [];
+    return histData.basins.map(b => ({
+      id: b.id,
+      havza_key: b.havza_key,
+      name: t(`havza_names.${b.havza_key}`),
+    }));
+  }, [histData, t]);
+
+  const fuseBasins = useMemo(
+    () => new Fuse(basinItems, { keys: ['name'], threshold: 0.4, includeScore: true }),
+    [basinItems]
+  );
+
   const results: ResultItem[] = useMemo(() => {
     if (!query.trim()) return [];
     const scholars = fuseScholars.search(query, { limit: 5 }).map(r => ({ kind: 'scholar' as const, data: r.item, score: r.score || 1 }));
     const sources = fuseSources.search(query, { limit: 5 }).map(r => ({ kind: 'source' as const, data: r.item, score: r.score || 1 }));
-    const merged = [...scholars, ...sources].sort((a, b) => a.score - b.score);
-    return merged.slice(0, 8).map(({ kind, data }) => ({ kind, data } as ResultItem));
-  }, [query, fuseScholars, fuseSources]);
+    const periods = fusePeriods.search(query, { limit: 2 }).map(r => ({ kind: 'period' as const, data: r.item, score: r.score || 1 }));
+    const basins = fuseBasins.search(query, { limit: 3 }).map(r => ({ kind: 'basin' as const, data: r.item, score: r.score || 1 }));
+    const merged = [...scholars, ...sources, ...periods, ...basins].sort((a, b) => a.score - b.score);
+    return merged.slice(0, 10).map(({ kind, data }) => ({ kind, data } as ResultItem));
+  }, [query, fuseScholars, fuseSources, fusePeriods, fuseBasins]);
 
   const goTo = useCallback((item: ResultItem) => {
     if (item.kind === 'scholar') navigate(`/scholars/${item.data.author_id}`);
-    else navigate(`/sources/${(item.data as Work).work_id}`);
+    else if (item.kind === 'source') navigate(`/sources/${(item.data as Work).work_id}`);
+    else if (item.kind === 'period') navigate(`/periodization#${(item.data as { id: string }).id}`);
+    else if (item.kind === 'basin') navigate(`/historiography/${(item.data as { id: string }).id}`);
     setQuery('');
     setOpen(false);
   }, [navigate]);
@@ -95,9 +134,16 @@ export default function GlobalSearch() {
 
       {open && results.length > 0 && (
         <div className="gs-dropdown">
-          {results.map((item, i) => (
+          {results.map((item, i) => {
+            let itemKey = '';
+            if (item.kind === 'scholar') itemKey = `scholar-${item.data.author_id}`;
+            else if (item.kind === 'source') itemKey = `source-${(item.data as Work).work_id}`;
+            else if (item.kind === 'period') itemKey = `period-${(item.data as { id: string }).id}`;
+            else if (item.kind === 'basin') itemKey = `basin-${(item.data as { id: string }).id}`;
+
+            return (
             <button
-              key={`${item.kind}-${item.kind === 'scholar' ? item.data.author_id : (item.data as Work).work_id}`}
+              key={itemKey}
               className={`gs-result ${i === selectedIdx ? 'gs-result-active' : ''}`}
               onClick={() => goTo(item)}
               onMouseEnter={() => setSelectedIdx(i)}
@@ -113,7 +159,7 @@ export default function GlobalSearch() {
                     </span>
                   </div>
                 </>
-              ) : (
+              ) : item.kind === 'source' ? (
                 <>
                   <span className="gs-dot" style={{ background: TYPE_COLORS[(item.data as Work).eser_turu] || '#999' }} />
                   <div className="gs-result-info">
@@ -123,9 +169,30 @@ export default function GlobalSearch() {
                     </span>
                   </div>
                 </>
-              )}
+              ) : item.kind === 'period' ? (
+                <>
+                  <span className="gs-dot" style={{ background: PERIOD_COLORS[(item.data as { id: string }).id] || '#999' }} />
+                  <div className="gs-result-info">
+                    <span className="gs-result-name">{(item.data as { name: string }).name}</span>
+                    <span className="gs-result-meta">
+                      {t('periodization.title')} · {(item.data as { subtitle: string }).subtitle}
+                    </span>
+                  </div>
+                </>
+              ) : item.kind === 'basin' ? (
+                <>
+                  <span className="gs-dot" style={{ background: HAVZA_COLORS[(item.data as { havza_key: string }).havza_key] || '#999' }} />
+                  <div className="gs-result-info">
+                    <span className="gs-result-name">{(item.data as { name: string }).name}</span>
+                    <span className="gs-result-meta">
+                      {t('historiography.title')}
+                    </span>
+                  </div>
+                </>
+              ) : null}
             </button>
-          ))}
+            );
+          })}
         </div>
       )}
 
