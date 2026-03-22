@@ -10,6 +10,8 @@
     "about": "Hakkında",
     "silsile": "Silsile",
     "compare": "Karşılaştır",
+    "periodization": "Dönemlendirme",
+    "historiography": "Tarih Yazıcılığı",
     "search_placeholder": "Tarihçi, kaynak veya havza ara..."
   },
   "stats": {
@@ -185,5 +187,32 @@
     "close": "Kapat",
     "export_done": "Dışa aktarma tamamlandı",
     "offline": "Çevrimdışı mod"
+  },
+  "periodization": {
+    "title": "Dönemlendirme",
+    "subtitle": "İslam tarihyazımının üç ana dönemi",
+    "genres": "Türler",
+    "key_scholars": "Önemli İsimler",
+    "schools": "Ekoller",
+    "genre_overview": "Tarih Yazıcılığı Türleri",
+    "references": "Kaynakça",
+    "more": "Detaylı oku ▾",
+    "less": "Kapat ▴",
+    "show_map": "Haritada Göster",
+    "show_network": "Ağda Göster",
+    "show_timeline": "Kronolojide Göster",
+    "detail": "Detay →"
+  },
+  "historiography": {
+    "title": "Havza Tarih Yazıcılığı",
+    "subtitle": "Havzalara göre İslam tarihyazım gelenekleri",
+    "card_mode": "Kart Görünümü",
+    "map_mode": "Harita Görünümü",
+    "dynasties": "Hanedan",
+    "detail": "Detay",
+    "period_narrative": "Dönemsel Anlatı",
+    "basin_writing": "Bu Havzanın Tarih Yazıcılığı",
+    "havza_detail": "Havza Detayı",
+    "all_basins": "Tüm Havzalar"
   }
 }

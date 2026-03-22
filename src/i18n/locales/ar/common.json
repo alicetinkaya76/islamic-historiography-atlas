@@ -10,6 +10,8 @@
     "about": "حول المشروع",
     "silsile": "السلسلة",
     "compare": "مقارنة",
+    "periodization": "التقسيم الزمني",
+    "historiography": "كتابة التاريخ",
     "search_placeholder": "ابحث عن مؤرخ أو مصدر أو حوض..."
   },
   "stats": {
@@ -185,5 +187,32 @@
     "close": "إغلاق",
     "export_done": "تم التصدير",
     "offline": "وضع عدم الاتصال"
+  },
+  "periodization": {
+    "title": "التقسيم الزمني",
+    "subtitle": "المراحل الثلاث الرئيسية لكتابة التاريخ الإسلامي",
+    "genres": "الأنواع",
+    "key_scholars": "الأعلام البارزون",
+    "schools": "المدارس",
+    "genre_overview": "أنواع الكتابة التاريخية",
+    "references": "المراجع",
+    "more": "اقرأ المزيد ▾",
+    "less": "إغلاق ▴",
+    "show_map": "عرض على الخريطة",
+    "show_network": "عرض الشبكة",
+    "show_timeline": "عرض التسلسل الزمني",
+    "detail": "التفاصيل ←"
+  },
+  "historiography": {
+    "title": "كتابة التاريخ حسب الأحواض",
+    "subtitle": "تقاليد كتابة التاريخ الإسلامي حسب المنطقة",
+    "card_mode": "عرض البطاقات",
+    "map_mode": "عرض الخريطة",
+    "dynasties": "الأسر الحاكمة",
+    "detail": "التفاصيل",
+    "period_narrative": "السرد الزمني",
+    "basin_writing": "كتابة التاريخ في هذا الحوض",
+    "havza_detail": "تفاصيل الحوض",
+    "all_basins": "جميع الأحواض"
   }
 }

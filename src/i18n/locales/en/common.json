@@ -10,6 +10,8 @@
     "about": "About",
     "silsile": "Silsila",
     "compare": "Compare",
+    "periodization": "Periodization",
+    "historiography": "Historiography",
     "search_placeholder": "Search scholars, sources, or regions..."
   },
   "stats": {
@@ -185,5 +187,32 @@
     "close": "Close",
     "export_done": "Export completed",
     "offline": "Offline mode"
+  },
+  "periodization": {
+    "title": "Periodization",
+    "subtitle": "Three major periods of Islamic historiography",
+    "genres": "Genres",
+    "key_scholars": "Key Scholars",
+    "schools": "Schools",
+    "genre_overview": "Historiographical Genres",
+    "references": "References",
+    "more": "Read more ▾",
+    "less": "Collapse ▴",
+    "show_map": "Show on Map",
+    "show_network": "Show Network",
+    "show_timeline": "Show Timeline",
+    "detail": "Details →"
+  },
+  "historiography": {
+    "title": "Basin Historiography",
+    "subtitle": "Islamic historiographical traditions by region",
+    "card_mode": "Card View",
+    "map_mode": "Map View",
+    "dynasties": "Dynasties",
+    "detail": "Details",
+    "period_narrative": "Periodical Narrative",
+    "basin_writing": "Historiography of this Basin",
+    "havza_detail": "Basin Details",
+    "all_basins": "All Basins"
   }
 }

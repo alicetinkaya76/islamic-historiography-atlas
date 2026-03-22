@@ -56,3 +56,23 @@ export const HAVZA_ORDER = [
   'iran', 'misir', 'hint', 'endulus', 'arabistan',
   'magrib', 'turkistan', 'balkanlar',
 ];
+
+export const PERIOD_COLORS: Record<string, string> = {
+  formation: '#1565C0',
+  development: '#2E7D32',
+  contraction: '#E65100',
+};
+
+export const PERIOD_RANGES: Record<string, [number, number]> = {
+  formation: [7, 10],
+  development: [11, 18],
+  contraction: [19, 21],
+};
+
+export function getPeriodId(century: number | null): string | null {
+  if (!century) return null;
+  if (century >= 7 && century <= 10) return 'formation';
+  if (century >= 11 && century <= 18) return 'development';
+  if (century >= 19) return 'contraction';
+  return null;
+}
