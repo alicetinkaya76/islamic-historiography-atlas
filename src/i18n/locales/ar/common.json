@@ -41,7 +41,8 @@
     "pre_islamic": "ما قبل الإسلام",
     "formation": "عصر التأسيس (القرن ٧-١٠)",
     "development": "عصر التطور (القرن ١١-١٨)",
-    "modern": "عصر التحول والتنوع (القرن ١٩-٢٠)"
+    "modern": "عصر التحول والتنوع (القرن ١٩-٢٠)",
+    "contraction": "فترة الانكماش"
   },
   "source_types": {
     "genel_tarih": "التاريخ العام",
@@ -145,7 +146,8 @@
     "internal_links": "روابط İTTA الداخلية",
     "dia_ratio": "نسبة مطابقة DİA",
     "avg_century": "متوسط القرن",
-    "century_range": "نطاق القرون"
+    "century_range": "نطاق القرون",
+    "period_havza_heatmap": "التوزيع حسب الفترة والحوض"
   },
   "about": {
     "title": "حول İTTA",
