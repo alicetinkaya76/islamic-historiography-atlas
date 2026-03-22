@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuthors, useWorks, useRelations } from '../hooks/useData';
 import { HAVZA_COLORS } from '../utils/colors';
+import { PERIOD_COLORS, getPeriodId } from '../utils/colors';
 import { useMemo, lazy, Suspense } from 'react';
 
 const MiniNetwork = lazy(() => import('../components/MiniNetwork'));
@@ -43,12 +44,26 @@ export default function ScholarDetail() {
       <Link to="/scholars" className="back-link">← {t('common.back')}</Link>
 
       <header className="detail-header">
-        <span className="detail-havza-badge" style={{ background: HAVZA_COLORS[scholar.havza] }}>
-          {t(`havza_names.${scholar.havza}`)}
-        </span>
+        <div className="detail-badges-row">
+          <span className="detail-havza-badge" style={{ background: HAVZA_COLORS[scholar.havza] }}>
+            {t(`havza_names.${scholar.havza}`)}
+          </span>
+          {getPeriodId(scholar.yuzyil) && (
+            <Link to="/periodization" className="detail-period-badge" style={{ background: PERIOD_COLORS[getPeriodId(scholar.yuzyil)!] }}>
+              {t(`periods.${getPeriodId(scholar.yuzyil)}`)}
+            </Link>
+          )}
+        </div>
         <h1 className="detail-name">{scholar.meshur_isim}</h1>
         {scholar.arabic_name && <p className="detail-arabic">{scholar.arabic_name}</p>}
         <p className="detail-full-name">{scholar.tam_isim}</p>
+
+        {/* Historiography context link */}
+        <div className="detail-context-links">
+          <Link to={`/historiography/${scholar.havza}`} className="context-link">
+            {t('historiography.basin_writing')} →
+          </Link>
+        </div>
       </header>
 
       <div className="detail-grid">

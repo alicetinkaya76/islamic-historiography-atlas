@@ -74,6 +74,64 @@ export interface HavzaGeoCollection {
   features: HavzaGeoFeature[];
 }
 
+// Period & Historiography types
+export interface PeriodSchool {
+  id: string;
+  key_scholars_ids: string[];
+  tr: { name: string; desc: string };
+  en: { name: string; desc: string };
+}
+
+export interface Period {
+  id: string;
+  century_min: number;
+  century_max: number;
+  color: string;
+  schools: PeriodSchool[];
+  genres: string[];
+  key_scholars_ids: string[];
+  tr: { name: string; subtitle: string; summary: string; detailed: string };
+  en: { name: string; subtitle: string; summary: string; detailed: string };
+}
+
+export interface GenreDetail {
+  id: string;
+  key_works_ids: string[];
+  tr: { name: string; desc: string };
+  en: { name: string; desc: string };
+}
+
+export interface PeriodsData {
+  periods: Period[];
+  genre_details: GenreDetail[];
+  references: { citation: string; doi?: string; isbn?: string }[];
+}
+
+export interface BasinDynasty {
+  name_tr: string;
+  name_en: string;
+  years: string;
+  period: string;
+}
+
+export interface Basin {
+  id: string;
+  havza_key: string;
+  color: string;
+  dynasties: BasinDynasty[];
+  key_scholars_ids: string[];
+  periods: {
+    formation: { tr: string; en: string };
+    development: { tr: string; en: string };
+    contraction: { tr: string; en: string };
+  };
+  references: { citation: string; doi?: string }[];
+}
+
+export interface HistoriographyData {
+  basins: Basin[];
+}
+
 const cache: Record<string, unknown> = {};
 const BASE = import.meta.env.BASE_URL;
 
@@ -137,4 +195,22 @@ export function useHavzaGeo() {
     loadJSON<HavzaGeoCollection>('data/havza_geo.json').then(d => { setGeo(d); setLoading(false); });
   }, []);
   return { geo, loading };
+}
+
+export function usePeriods() {
+  const [data, setData] = useState<PeriodsData | null>(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    loadJSON<PeriodsData>('data/periods.json').then(d => { setData(d); setLoading(false); });
+  }, []);
+  return { periodsData: data, loading };
+}
+
+export function useHistoriography() {
+  const [data, setData] = useState<HistoriographyData | null>(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    loadJSON<HistoriographyData>('data/historiography.json').then(d => { setData(d); setLoading(false); });
+  }, []);
+  return { histData: data, loading };
 }

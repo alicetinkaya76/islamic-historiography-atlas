@@ -1,0 +1,197 @@
+{
+  "basins": [
+    {
+      "id": "iran",
+      "havza_key": "iran",
+      "color": "#C2185B",
+      "dynasties": [
+        { "name_tr": "Emevîler", "name_en": "Umayyads", "years": "661–750", "period": "formation" },
+        { "name_tr": "Abbâsîler", "name_en": "Abbasids", "years": "750–1258", "period": "formation" },
+        { "name_tr": "Sâmânîler", "name_en": "Samanids", "years": "819–999", "period": "formation" },
+        { "name_tr": "Gazneliler", "name_en": "Ghaznavids", "years": "977–1186", "period": "development" },
+        { "name_tr": "Selçuklular", "name_en": "Seljuks", "years": "1037–1194", "period": "development" },
+        { "name_tr": "İlhanlılar", "name_en": "Ilkhanids", "years": "1256–1335", "period": "development" },
+        { "name_tr": "Timûrlular", "name_en": "Timurids", "years": "1370–1507", "period": "development" },
+        { "name_tr": "Safevîler", "name_en": "Safavids", "years": "1501–1736", "period": "development" },
+        { "name_tr": "Kaçarlar", "name_en": "Qajars", "years": "1796–1925", "period": "contraction" },
+        { "name_tr": "Pehlevîler", "name_en": "Pahlavis", "years": "1925–1979", "period": "contraction" }
+      ],
+      "key_scholars_ids": ["AU_00044", "AU_00039", "AU_00045"],
+      "periods": {
+        "formation": {
+          "tr": "İran havzası, İslam tarihyazımının ilk döneminde Kûfe ve Basra merkezli ilim halkaları sayesinde öncü bir konuma sahip olmuştur. Taberî, Ya'kûbî ve Belâzürî gibi büyük tarihçiler bu havzada yetişmiştir. Abbâsî halifeliğinin Bağdat'a taşınması, bu bölgenin tarihyazım merkezi olmasını hızlandırmıştır.",
+          "en": "The Iranian basin occupied a pioneering position in the first period of Islamic historiography through scholarly circles centered in Kufa and Basra. Great historians such as al-Ṭabarī, al-Yaʿqūbī, and al-Balādhurī were raised in this basin. The relocation of the Abbasid caliphate to Baghdad accelerated this region's emergence as a historiographical center."
+        },
+        "development": {
+          "tr": "Selçuklular, İlhanlılar, Timûrlular ve Safevîler döneminde İran havzasında tarih yazıcılığı altın çağını yaşamıştır. Farsça tarih yazıcılığı bu dönemde Arapçanın yanında öne çıkmıştır. Cüveynî, Reşîdüddin, Hâfız-ı Ebrû ve İskender Beg Münşî gibi isimler dönemin önde gelen tarihçileridir.",
+          "en": "During the Seljuk, Ilkhanid, Timurid, and Safavid periods, historiography in the Iranian basin experienced its golden age. Persian historiography rose alongside Arabic during this era. Juwaynī, Rashīd al-Dīn, Ḥāfiẓ-i Abrū, and Iskandar Beg Munshī are among the leading historians of the period."
+        },
+        "contraction": {
+          "tr": "Kaçar ve Pehlevî dönemlerinde İran tarihyazımı Batılı yöntemlerin etkisiyle dönüşüme uğramıştır. Modern üniversitelerin kurulması ve Avrupa'da eğitim alan tarihçilerin geri dönmesiyle eleştirel tarihyazım yöntemi benimsenmiştir. Ancak geleneksel tarihyazımı pratikleri büyük ölçüde terk edilmiştir.",
+          "en": "During the Qajar and Pahlavi periods, Iranian historiography underwent transformation under the influence of Western methods. The establishment of modern universities and the return of European-trained historians led to the adoption of critical historiography. However, traditional historiographical practices were largely abandoned."
+        }
+      },
+      "references": [
+        { "citation": "Macit, A. (2024). TAV Rapor, Sayı 1, s. 7-15.", "doi": "" }
+      ]
+    },
+    {
+      "id": "misir",
+      "havza_key": "misir",
+      "color": "#1565C0",
+      "dynasties": [
+        { "name_tr": "Tolunoğulları", "name_en": "Tulunids", "years": "868–905", "period": "formation" },
+        { "name_tr": "Fâtımîler", "name_en": "Fatimids", "years": "969–1171", "period": "development" },
+        { "name_tr": "Eyyûbîler", "name_en": "Ayyubids", "years": "1171–1250", "period": "development" },
+        { "name_tr": "Memlükler", "name_en": "Mamluks", "years": "1250–1517", "period": "development" },
+        { "name_tr": "Osmanlılar (Mısır)", "name_en": "Ottomans (Egypt)", "years": "1517–1798", "period": "development" },
+        { "name_tr": "Kavalalı Hanedanı", "name_en": "Muhammad Ali Dynasty", "years": "1805–1953", "period": "contraction" }
+      ],
+      "key_scholars_ids": [],
+      "periods": {
+        "formation": {
+          "tr": "Mısır, İslam fetihlerinin ardından erken dönemde önemli bir ilim merkezi olmuştur. Özellikle Fustat ve İskenderiye'deki ilim halkaları, tarihî bilginin aktarımında rol oynamıştır. İbn Abdülhakem'in Fütûhu Mısr adlı eseri bu dönemin en önemli tarihî kaynağıdır.",
+          "en": "Egypt became an important center of learning early after the Islamic conquests. Scholarly circles in Fustat and Alexandria played a role in transmitting historical knowledge. Ibn ʿAbd al-Ḥakam's Futūḥ Miṣr is the most important historical source of this period."
+        },
+        "development": {
+          "tr": "Memlük dönemi, Mısır tarihyazımının altın çağıdır. Kahire, İslam dünyasının en büyük tarihyazım merkezi haline gelmiştir. İbn Tağrîberdî, Makrîzî, Kalkaşendî ve Süyûtî gibi tarihçiler devasa biyografik ve kronolojik eserler kaleme almışlardır.",
+          "en": "The Mamluk period represents the golden age of Egyptian historiography. Cairo became the greatest historiographical center of the Islamic world. Historians such as Ibn Taghrībirdī, al-Maqrīzī, al-Qalqashandī, and al-Suyūṭī authored enormous biographical and chronological works."
+        },
+        "contraction": {
+          "tr": "Napolyon'un Mısır seferi (1798) ve ardından Kavalalı Mehmed Ali Paşa dönemi, Mısır'da modern tarihyazımının başlangıcını oluşturmuştur. Rıfâa et-Tahtâvî ve Abdurrahman er-Râfiî gibi isimler, Batılı yöntemlerle İslam tarihini yeniden yorumlayan öncü tarihçilerdir.",
+          "en": "Napoleon's Egyptian expedition (1798) and the subsequent era of Muhammad Ali Pasha marked the beginning of modern historiography in Egypt. Scholars like Rifāʿa al-Ṭahṭāwī and ʿAbd al-Raḥmān al-Rāfiʿī were pioneers in reinterpreting Islamic history using Western methods."
+        }
+      },
+      "references": [
+        { "citation": "Macit, A. (2024). TAV Rapor, Sayı 1, s. 15-22.", "doi": "" }
+      ]
+    },
+    {
+      "id": "hint",
+      "havza_key": "hint",
+      "color": "#00838F",
+      "dynasties": [
+        { "name_tr": "Gazneliler", "name_en": "Ghaznavids", "years": "977–1186", "period": "development" },
+        { "name_tr": "Delhi Sultanlığı", "name_en": "Delhi Sultanate", "years": "1206–1526", "period": "development" },
+        { "name_tr": "Bâbürlüler", "name_en": "Mughals", "years": "1526–1857", "period": "development" },
+        { "name_tr": "İngiliz Hindistanı", "name_en": "British India", "years": "1857–1947", "period": "contraction" }
+      ],
+      "key_scholars_ids": [],
+      "periods": {
+        "formation": {
+          "tr": "Hint alt kıtasında İslam tarihyazımının teşekkül dönemi, Gazneli Mahmud'un fetihleriyle başlamıştır. Bîrûnî'nin Kitâbü'l-Hind'i, bu havzadaki ilk kapsamlı tarihî eserdir ve karşılaştırmalı medeniyet tarihi yaklaşımıyla öncü bir konumdadır.",
+          "en": "The formation of Islamic historiography in the Indian subcontinent began with the conquests of Mahmud of Ghazni. al-Bīrūnī's Kitāb al-Hind is the first comprehensive historical work in this basin and a pioneer in its comparative civilizational approach."
+        },
+        "development": {
+          "tr": "Delhi Sultanlığı ve Bâbürlü İmparatorluğu dönemlerinde Hint alt kıtası zengin bir tarihyazım geleneği geliştirmiştir. Farsça tarihyazımı hâkim dil olmuştur. Ziyâüddîn Berenî, Ebü'l-Fazl ve Müstaid Hân gibi tarihçiler önemli eserler kaleme almışlardır.",
+          "en": "During the Delhi Sultanate and Mughal Empire, the Indian subcontinent developed a rich historiographical tradition. Persian was the dominant language. Historians such as Ḍiyāʾ al-Dīn Baranī, Abūʾl-Faḍl, and Mustaʿidd Khān authored significant works."
+        },
+        "contraction": {
+          "tr": "İngiliz sömürgeciliği döneminde Hint alt kıtasında geleneksel tarihyazımı büyük bir daralmaya uğramıştır. Ancak Seyyid Ahmed Han, Şiblî Nu'mânî ve M. Habîbullah gibi isimler, İslam tarihini modern yöntemlerle yeniden ele alarak önemli katkılar sağlamışlardır.",
+          "en": "During British colonial rule, traditional historiography in the Indian subcontinent experienced a major contraction. However, scholars like Sir Sayyid Ahmad Khan, Shiblī Nuʿmānī, and M. Habibullah made important contributions by re-examining Islamic history with modern methods."
+        }
+      },
+      "references": [
+        { "citation": "Macit, A. (2024). TAV Rapor, Sayı 1, s. 22-30.", "doi": "" }
+      ]
+    },
+    {
+      "id": "balkanlar",
+      "havza_key": "balkanlar",
+      "color": "#37474F",
+      "dynasties": [
+        { "name_tr": "Osmanlılar (Balkanlar)", "name_en": "Ottomans (Balkans)", "years": "1362–1912", "period": "development" }
+      ],
+      "key_scholars_ids": [],
+      "periods": {
+        "formation": {
+          "tr": "Balkanlar havzasında teşekkül döneminde sistematik bir İslam tarihyazımından söz etmek güçtür. Bölgenin İslamlaşması daha geç dönemlerde gerçekleşmiştir.",
+          "en": "It is difficult to speak of systematic Islamic historiography in the Balkans basin during the formation period. The Islamization of the region occurred in later periods."
+        },
+        "development": {
+          "tr": "Osmanlı döneminde Balkanlar, imparatorluğun Avrupa kanadını oluşturmuş ve bu bölgede yetişen tarihçiler Osmanlı tarihyazımına önemli katkılarda bulunmuşlardır. Peçevî, Selanikli Mustafa Efendi ve Evliya Çelebi gibi isimler Balkan coğrafyası hakkında değerli eserler bırakmışlardır.",
+          "en": "During the Ottoman period, the Balkans formed the European wing of the empire, and historians raised in this region made important contributions to Ottoman historiography. Peçevī, Selānikī Muṣṭafā Efendi, and Evliyā Çelebi left valuable works about the Balkan geography."
+        },
+        "contraction": {
+          "tr": "Balkan savaşları ve ulus-devletlerin kurulmasıyla birlikte bölgedeki İslam tarihyazımı büyük bir daralmaya uğramıştır. Müslüman topluluklar azınlık konumuna düşmüş ve tarihyazım geleneği kesintiye uğramıştır.",
+          "en": "With the Balkan Wars and the establishment of nation-states, Islamic historiography in the region experienced a major contraction. Muslim communities became minorities and the historiographical tradition was disrupted."
+        }
+      },
+      "references": []
+    },
+    {
+      "id": "endulus",
+      "havza_key": "endulus",
+      "color": "#AD1457",
+      "dynasties": [
+        { "name_tr": "Endülüs Emevîleri", "name_en": "Umayyads of Córdoba", "years": "756–1031", "period": "formation" },
+        { "name_tr": "Murâbıtlar", "name_en": "Almoravids", "years": "1040–1147", "period": "development" },
+        { "name_tr": "Muvahhidler", "name_en": "Almohads", "years": "1121–1269", "period": "development" },
+        { "name_tr": "Nasrîler", "name_en": "Nasrids", "years": "1232–1492", "period": "development" }
+      ],
+      "key_scholars_ids": [],
+      "periods": {
+        "formation": {
+          "tr": "Endülüs Emevî Devleti döneminde İberya yarımadasında özgün bir İslam tarihyazım geleneği oluşmuştur. İbn Habîb, Ahmed er-Râzî ve İbn Kūtiyye bu geleneğin öncüleridir.",
+          "en": "During the Umayyad Emirate and Caliphate of Córdoba, a distinctive Islamic historiographical tradition formed on the Iberian Peninsula. Ibn Ḥabīb, Aḥmad al-Rāzī, and Ibn al-Qūṭiyya were the pioneers of this tradition."
+        },
+        "development": {
+          "tr": "Endülüs tarihyazımı, İbn Hazm, İbn Beşküvâl, İbnü'l-Ebbâr ve Lisânüddîn İbnü'l-Hatîb gibi büyük tarihçilerle doruk noktasına ulaşmıştır. Bölgenin kültürel çoğulculuğu tarihyazımına zengin bir perspektif kazandırmıştır.",
+          "en": "Andalusian historiography reached its peak with great historians like Ibn Ḥazm, Ibn Bashkuwāl, Ibn al-Abbār, and Lisān al-Dīn Ibn al-Khaṭīb. The region's cultural pluralism lent a rich perspective to its historiography."
+        },
+        "contraction": {
+          "tr": "Reconquista ile birlikte Endülüs'teki İslam tarihyazımı sona ermiştir. 1492'de Granada'nın düşmesiyle bu havzadaki yazım geleneği tamamen kesintiye uğramıştır.",
+          "en": "With the Reconquista, Islamic historiography in al-Andalus came to an end. The fall of Granada in 1492 completely disrupted the writing tradition in this basin."
+        }
+      },
+      "references": []
+    },
+    {
+      "id": "arabistan",
+      "havza_key": "arabistan",
+      "color": "#BF360C",
+      "dynasties": [],
+      "key_scholars_ids": [],
+      "periods": {
+        "formation": { "tr": "Mekke ve Medine merkezli erken dönem tarihyazımı, siyer-meğâzî geleneğinin doğduğu coğrafyadır.", "en": "Early historiography centered in Mecca and Medina is the birthplace of the sīra-maghāzī tradition." },
+        "development": { "tr": "Hac yolculukları ve ilim seyahatleri sayesinde Arabistan yarımadası, İslam dünyasının farklı havzalarından gelen tarihçilerin buluşma noktası olmuştur.", "en": "Through pilgrimage journeys and scholarly travels, the Arabian Peninsula became a meeting point for historians from different basins of the Islamic world." },
+        "contraction": { "tr": "Modern dönemde Arabistan yarımadasındaki tarihyazımı, petrol gelirlerinin sağladığı yeni kurumsal yapılarla dönüşüme uğramıştır.", "en": "In the modern period, historiography in the Arabian Peninsula was transformed by new institutional structures enabled by oil revenues." }
+      },
+      "references": []
+    },
+    {
+      "id": "magrib",
+      "havza_key": "magrib",
+      "color": "#2E7D32",
+      "dynasties": [
+        { "name_tr": "Ağlebîler", "name_en": "Aghlabids", "years": "800–909", "period": "formation" },
+        { "name_tr": "Merînîler", "name_en": "Marinids", "years": "1244–1465", "period": "development" },
+        { "name_tr": "Sa'dîler", "name_en": "Saadians", "years": "1549–1659", "period": "development" }
+      ],
+      "key_scholars_ids": [],
+      "periods": {
+        "formation": { "tr": "Mağrib havzasında İslam tarihyazımının teşekkülü, Kayrevân merkezli ilim halkalarıyla başlamıştır.", "en": "The formation of Islamic historiography in the Maghreb basin began with scholarly circles centered in Kairouan." },
+        "development": { "tr": "İbn Haldûn'un Mukaddime'si bu havzanın en büyük tarihyazım katkısıdır. Tarih felsefesi alanında çığır açan bu eser, İslam tarihyazımının zirvelerinden biridir.", "en": "Ibn Khaldūn's Muqaddima is the greatest historiographical contribution of this basin. This groundbreaking work in the philosophy of history is one of the pinnacles of Islamic historiography." },
+        "contraction": { "tr": "Fransız sömürgeciliği döneminde Mağrib'deki geleneksel tarihyazımı ciddi bir daralmaya uğramıştır.", "en": "During French colonialism, traditional historiography in the Maghreb experienced a serious contraction." }
+      },
+      "references": []
+    },
+    {
+      "id": "turkistan",
+      "havza_key": "turkistan",
+      "color": "#6A1B9A",
+      "dynasties": [
+        { "name_tr": "Karahanlılar", "name_en": "Karakhanids", "years": "840–1212", "period": "development" },
+        { "name_tr": "Timûrlular", "name_en": "Timurids", "years": "1370–1507", "period": "development" },
+        { "name_tr": "Şeybânîler", "name_en": "Shaybanids", "years": "1500–1598", "period": "development" }
+      ],
+      "key_scholars_ids": [],
+      "periods": {
+        "formation": { "tr": "Türkistan havzasında erken dönem tarihyazımı, Mâverâünnehir'deki Arapça ve Farsça ilim geleneğiyle şekillenmiştir.", "en": "Early historiography in the Turkestan basin was shaped by the Arabic and Persian scholarly tradition in Transoxiana." },
+        "development": { "tr": "Timûrlular döneminde Semerkant ve Herat, önemli tarihyazım merkezleri haline gelmiştir. Çağatayca tarih yazıcılığı da bu dönemde ortaya çıkmıştır.", "en": "During the Timurid period, Samarkand and Herat became important historiographical centers. Chagatai Turkish historiography also emerged in this era." },
+        "contraction": { "tr": "Rus sömürgeciliği ve Sovyet dönemi, Türkistan'daki İslam tarihyazımını büyük ölçüde kesintiye uğratmıştır.", "en": "Russian colonialism and the Soviet period largely disrupted Islamic historiography in Turkestan." }
+      },
+      "references": []
+    }
+  ]
+}

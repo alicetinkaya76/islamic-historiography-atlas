@@ -9,6 +9,8 @@ const navItems = [
   { key: 'home', path: '/' },
   { key: 'scholars', path: '/scholars' },
   { key: 'sources', path: '/sources' },
+  { key: 'periodization', path: '/periodization' },
+  { key: 'historiography', path: '/historiography' },
   { key: 'map', path: '/map' },
   { key: 'network', path: '/network' },
   { key: 'silsile', path: '/silsile' },

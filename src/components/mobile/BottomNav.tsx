@@ -11,6 +11,8 @@ const mainTabs = [
 
 const drawerItems = [
   { key: 'sources', path: '/sources' },
+  { key: 'periodization', path: '/periodization' },
+  { key: 'historiography', path: '/historiography' },
   { key: 'silsile', path: '/silsile' },
   { key: 'compare', path: '/compare' },
   { key: 'timeline', path: '/timeline' },

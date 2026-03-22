@@ -175,6 +175,13 @@ export default function HavzaDetail() {
           </Link>
         </section>
       </div>
+
+      {/* Historiography Link */}
+      <div className="hist-link-card">
+        <Link to={`/historiography/${id}`} className="hist-link-btn" style={{ background: color }}>
+          {t('historiography.basin_writing')} →
+        </Link>
+      </div>
     </div>
   );
 }

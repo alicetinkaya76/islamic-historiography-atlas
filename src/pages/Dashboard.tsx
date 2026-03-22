@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useStats, useAuthors, useWorks } from '../hooks/useData';
-import { HAVZA_COLORS, HAVZA_ORDER, TYPE_COLORS } from '../utils/colors';
+import { HAVZA_COLORS, HAVZA_ORDER, TYPE_COLORS, PERIOD_COLORS, getPeriodId } from '../utils/colors';
 import { useMemo } from 'react';
 
 function StatCard({ label, value, sub }: { label: string; value: number | string; sub?: string }) {
@@ -130,6 +130,16 @@ export default function Dashboard() {
     return m;
   }, [authors]);
 
+  // Period counts
+  const periodCounts = useMemo(() => {
+    const counts: Record<string, number> = { formation: 0, development: 0, contraction: 0 };
+    for (const a of authors) {
+      const pid = getPeriodId(a.yuzyil);
+      if (pid && counts[pid] !== undefined) counts[pid]++;
+    }
+    return counts;
+  }, [authors]);
+
   if (statsLoading || authorsLoading || worksLoading) {
     return <div className="loading-screen">{t('common.loading')}</div>;
   }
@@ -201,6 +211,38 @@ export default function Dashboard() {
           <Link to="/scholars" className="show-all-link">{t('common.show_all')} →</Link>
         </section>
       </div>
+
+      {/* Period Overview */}
+      <section className="dash-period-section">
+        <h2 className="section-title">{t('periodization.title')}</h2>
+        <div className="dash-period-cards">
+          {(['formation', 'development', 'contraction'] as const).map(pid => (
+            <Link key={pid} to="/periodization" className="dash-period-card" style={{ borderLeftColor: PERIOD_COLORS[pid] }}>
+              <span className="dash-period-dot" style={{ background: PERIOD_COLORS[pid] }} />
+              <div className="dash-period-info">
+                <span className="dash-period-name">{t(`periods.${pid}`)}</span>
+                <span className="dash-period-count">{periodCounts[pid]} {t('stats.scholars').toLowerCase()}</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <Link to="/periodization" className="show-all-link">{t('periodization.detail')} →</Link>
+      </section>
+
+      {/* Historiography Quick Access */}
+      <section className="dash-hist-section">
+        <h2 className="section-title">{t('historiography.title')}</h2>
+        <div className="dash-hist-chips">
+          {HAVZA_ORDER.slice(0, 6).map(h => (
+            <Link key={h} to={`/historiography/${h}`} className="dash-hist-chip" style={{ borderColor: HAVZA_COLORS[h] }}>
+              <span className="dash-hist-dot" style={{ background: HAVZA_COLORS[h] }} />
+              <span>{t(`havza_names.${h}`)}</span>
+              <span className="dash-hist-arrow">→</span>
+            </Link>
+          ))}
+        </div>
+        <Link to="/historiography" className="show-all-link">{t('historiography.all_basins')} →</Link>
+      </section>
     </div>
   );
 }

@@ -18,6 +18,9 @@ const About = lazy(() => import('./pages/About'));
 const Statistics = lazy(() => import('./pages/Statistics'));
 const SilsileView = lazy(() => import('./pages/SilsileView'));
 const HavzaCompare = lazy(() => import('./pages/HavzaCompare'));
+const Periodization = lazy(() => import('./pages/Periodization'));
+const Historiography = lazy(() => import('./pages/Historiography'));
+const HistoriographyDetail = lazy(() => import('./pages/HistoriographyDetail'));
 
 function SuspenseWrap({ children }: { children: React.ReactNode }) {
   return (
@@ -45,6 +48,9 @@ export const router = createBrowserRouter([
       { path: 'statistics', element: <SuspenseWrap><Statistics /></SuspenseWrap> },
       { path: 'silsile', element: <SuspenseWrap><SilsileView /></SuspenseWrap> },
       { path: 'compare', element: <SuspenseWrap><HavzaCompare /></SuspenseWrap> },
+      { path: 'periodization', element: <SuspenseWrap><Periodization /></SuspenseWrap> },
+      { path: 'historiography', element: <SuspenseWrap><Historiography /></SuspenseWrap> },
+      { path: 'historiography/:id', element: <SuspenseWrap><HistoriographyDetail /></SuspenseWrap> },
     ],
   },
 ], { basename: import.meta.env.BASE_URL });
