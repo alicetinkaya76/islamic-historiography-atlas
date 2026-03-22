@@ -1,8 +1,10 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, lazy, Suspense } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAuthors, useWorks, useRelations, useHistoriography } from '../hooks/useData';
+import { useAuthors, useWorks, useRelations, useHistoriography, useCityCoords, useHavzaGeo } from '../hooks/useData';
 import { HAVZA_COLORS, PERIOD_COLORS, getPeriodId } from '../utils/colors';
+
+const MiniCityMap = lazy(() => import('../components/MiniCityMap'));
 
 const PERIOD_IDS = ['formation', 'development', 'contraction'] as const;
 
@@ -14,6 +16,8 @@ export default function HistoriographyDetail() {
   const { works, loading: wLoad } = useWorks();
   const { relations, loading: rLoad } = useRelations();
   const { histData, loading: hLoad } = useHistoriography();
+  const { coords, loading: cLoad } = useCityCoords();
+  const { geo, loading: gLoad } = useHavzaGeo();
 
   const [openPeriod, setOpenPeriod] = useState<string>('formation');
 
@@ -77,7 +81,7 @@ export default function HistoriographyDetail() {
     return Object.entries(m).sort((a, b) => b[1] - a[1]).slice(0, 10);
   }, [havzaAuthors]);
 
-  if (aLoad || wLoad || rLoad || hLoad) return <div className="loading-screen">{t('common.loading')}</div>;
+  if (aLoad || wLoad || rLoad || hLoad || cLoad || gLoad) return <div className="loading-screen">{t('common.loading')}</div>;
   if (!basin) return <div className="loading-screen">{t('scholar_detail.no_data')}</div>;
 
   return (
@@ -118,6 +122,18 @@ export default function HistoriographyDetail() {
         <Link to={`/havza/${havzaKey}`} className="hist-quick-link">{t('historiography.havza_detail')} →</Link>
         <Link to={`/compare?h1=${havzaKey}`} className="hist-quick-link">{t('compare.title')} →</Link>
       </div>
+
+      {/* Mini City Map (havza boundary + cities) */}
+      <Suspense fallback={null}>
+        <MiniCityMap
+          havzaKey={havzaKey}
+          authors={havzaAuthors}
+          coords={coords}
+          geo={geo}
+          maxCities={12}
+          height={260}
+        />
+      </Suspense>
 
       {/* Period Accordion */}
       <section className="hist-periods-section">

@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAuthors, useWorks, useRelations } from '../hooks/useData';
+import { useAuthors, useWorks, useRelations, usePeriods } from '../hooks/useData';
 import { HAVZA_COLORS } from '../utils/colors';
 import { PERIOD_COLORS, getPeriodId } from '../utils/colors';
 import { useMemo, lazy, Suspense } from 'react';
@@ -9,10 +9,11 @@ const MiniNetwork = lazy(() => import('../components/MiniNetwork'));
 
 export default function ScholarDetail() {
   const { id } = useParams<{ id: string }>();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { authors, loading: aLoading } = useAuthors();
   const { works, loading: wLoading } = useWorks();
   const { relations, loading: rLoading } = useRelations();
+  const { periodsData } = usePeriods();
 
   const scholar = useMemo(() => authors.find(a => a.author_id === id), [authors, id]);
   const scholarWorks = useMemo(() => works.filter(w => w.author_id === id), [works, id]);
@@ -181,6 +182,28 @@ export default function ScholarDetail() {
           />
         </Suspense>
       )}
+
+      {/* Period Context Card */}
+      {getPeriodId(scholar.yuzyil) && periodsData && (() => {
+        const pid = getPeriodId(scholar.yuzyil)!;
+        const period = periodsData.periods.find(p => p.id === pid);
+        if (!period) return null;
+        const lang2 = i18n.language === 'en' ? 'en' : 'tr';
+        return (
+          <div className="period-context-card" style={{ borderLeftColor: PERIOD_COLORS[pid] }}>
+            <div className="period-context-header">
+              <span className="period-context-dot" style={{ background: PERIOD_COLORS[pid] }} />
+              <Link to={`/periodization#${pid}`} className="period-context-title">
+                {period[lang2].name}
+              </Link>
+              <span className="period-context-range">
+                {period.century_min}–{period.century_max}. {t('dashboard.century_suffix')}
+              </span>
+            </div>
+            <p className="period-context-summary">{period[lang2].summary}</p>
+          </div>
+        );
+      })()}
 
       {/* Silsile Link */}
       {scholar.dia_slug && (scholarRelations.teachers.length > 0 || scholarRelations.students.length > 0) && (

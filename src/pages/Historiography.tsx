@@ -239,7 +239,31 @@ function HistMap({
 
   return (
     <div className="hist-map-container">
-      <div ref={mapRef} style={{ width: '100%', height: '450px', borderRadius: '12px' }} />
+      <div className="hist-map-wrapper">
+        <div ref={mapRef} className="hist-map-leaflet" />
+        <div className="hist-map-legend">
+          <div className="hist-map-legend-title">{t('historiography.title')}</div>
+          {basins.map(b => {
+            const hKey = b.havza_key;
+            const color = HAVZA_COLORS[hKey] || '#666';
+            const st = basinStats[hKey] || { scholars: 0, sources: 0 };
+            const name = lang === 'en'
+              ? geo.features.find(f => f.properties.id === hKey)?.properties.name_en || hKey
+              : geo.features.find(f => f.properties.id === hKey)?.properties.name_tr || hKey;
+            return (
+              <button
+                key={hKey}
+                className="hist-map-legend-item"
+                onClick={() => onBasinClick(b.id)}
+              >
+                <span className="hist-map-legend-dot" style={{ background: color }} />
+                <span className="hist-map-legend-name">{name}</span>
+                <span className="hist-map-legend-count">{st.scholars}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
