@@ -41,7 +41,8 @@
     "pre_islamic": "İslam Öncesi",
     "formation": "Teşekkül Dönemi (7-10. yy)",
     "development": "Gelişim Dönemi (11-18. yy)",
-    "modern": "Daralma ve Çeşitlenme (19-20. yy)"
+    "modern": "Daralma ve Çeşitlenme (19-20. yy)",
+    "contraction": "Daralma Dönemi"
   },
   "source_types": {
     "genel_tarih": "Genel Tarih",
@@ -145,7 +146,8 @@
     "internal_links": "İTTA İç Bağlantı",
     "dia_ratio": "DİA Eşleşme",
     "avg_century": "Ort. Yüzyıl",
-    "century_range": "Yüzyıl Aralığı"
+    "century_range": "Yüzyıl Aralığı",
+    "period_havza_heatmap": "Dönem × Havza Dağılımı"
   },
   "about": {
     "title": "İTTA Hakkında",

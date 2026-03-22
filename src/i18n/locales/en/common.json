@@ -41,7 +41,8 @@
     "pre_islamic": "Pre-Islamic",
     "formation": "Formation Period (7th–10th c.)",
     "development": "Development Period (11th–18th c.)",
-    "modern": "Contraction & Diversification (19th–20th c.)"
+    "modern": "Contraction & Diversification (19th–20th c.)",
+    "contraction": "Contraction Period"
   },
   "source_types": {
     "genel_tarih": "General History",
@@ -145,7 +146,8 @@
     "internal_links": "Internal ITTA Links",
     "dia_ratio": "DIA Match",
     "avg_century": "Avg. Century",
-    "century_range": "Century Range"
+    "century_range": "Century Range",
+    "period_havza_heatmap": "Period × Basin Distribution"
   },
   "about": {
     "title": "About İTTA",

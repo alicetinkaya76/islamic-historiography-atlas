@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuthors, useRelations, type Author, type Relation } from '../hooks/useData';
-import { HAVZA_COLORS, HAVZA_ORDER } from '../utils/colors';
+import { HAVZA_COLORS, HAVZA_ORDER, PERIOD_COLORS, PERIOD_RANGES } from '../utils/colors';
 import * as d3 from 'd3';
 
 interface GraphNode extends d3.SimulationNodeDatum {
@@ -48,6 +48,7 @@ export default function NetworkView() {
 
   const [selectedHavza, setSelectedHavza] = useState<string>(searchParams.get('havza') || '');
   const [selectedCentury, setSelectedCentury] = useState<string>(searchParams.get('century') || '');
+  const [selectedPeriod, setSelectedPeriod] = useState<string>(searchParams.get('period') || '');
   const [selectedRelType, setSelectedRelType] = useState<string>(searchParams.get('rel') || '');
   const [showAllEdges, setShowAllEdges] = useState(false);
   const [hoveredNode, setHoveredNode] = useState<GraphNode | null>(null);
@@ -100,6 +101,11 @@ export default function NetworkView() {
         // Apply filters
         if (selectedHavza && author.havza !== selectedHavza) continue;
         if (selectedCentury && author.yuzyil !== parseInt(selectedCentury)) continue;
+        if (selectedPeriod) {
+          const [pMin, pMax] = PERIOD_RANGES[selectedPeriod as keyof typeof PERIOD_RANGES] || [0, 99];
+          const c = author.yuzyil ?? (author.vefat_yili_m ? Math.ceil(author.vefat_yili_m / 100) : null);
+          if (c === null || c < pMin || c > pMax) continue;
+        }
         nodeMap.set(slug, {
           id: slug,
           slug,
@@ -134,7 +140,7 @@ export default function NetworkView() {
     }
 
     return { nodes: [...nodeMap.values()], links: graphLinks };
-  }, [relations, slugMap, selectedHavza, selectedCentury, selectedRelType, showAllEdges]);
+  }, [relations, slugMap, selectedHavza, selectedCentury, selectedPeriod, selectedRelType, showAllEdges]);
 
   // Stats
   const graphStats = useMemo(() => {
@@ -332,9 +338,10 @@ export default function NetworkView() {
     const params: Record<string, string> = {};
     if (selectedHavza) params.havza = selectedHavza;
     if (selectedCentury) params.century = selectedCentury;
+    if (selectedPeriod) params.period = selectedPeriod;
     if (selectedRelType) params.rel = selectedRelType;
     setSearchParams(params, { replace: true });
-  }, [selectedHavza, selectedCentury, selectedRelType, setSearchParams]);
+  }, [selectedHavza, selectedCentury, selectedPeriod, selectedRelType, setSearchParams]);
 
   const handleSelectNode = useCallback((node: GraphNode) => {
     navigate(`/scholars/${node.authorId}`);
@@ -374,6 +381,18 @@ export default function NetworkView() {
           <option value="">{t('common.all')} — {t('scholar_detail.century')}</option>
           {centuries.map(c => (
             <option key={c} value={c}>{c}{t('dashboard.century_suffix')}</option>
+          ))}
+        </select>
+
+        <select
+          className="filter-select"
+          value={selectedPeriod}
+          onChange={e => { setSelectedPeriod(e.target.value); setSelectedCentury(''); }}
+          style={selectedPeriod ? { borderColor: PERIOD_COLORS[selectedPeriod as keyof typeof PERIOD_COLORS] } : {}}
+        >
+          <option value="">{t('common.all')} — {t('nav.periodization')}</option>
+          {(['formation', 'development', 'contraction'] as const).map(pk => (
+            <option key={pk} value={pk}>{t(`periods.${pk}`)}</option>
           ))}
         </select>
 

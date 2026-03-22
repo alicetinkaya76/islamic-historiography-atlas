@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuthors, type Author } from '../hooks/useData';
-import { HAVZA_COLORS, HAVZA_ORDER } from '../utils/colors';
+import { HAVZA_COLORS, HAVZA_ORDER, PERIOD_COLORS } from '../utils/colors';
 import * as d3 from 'd3';
 
 interface TimelineItem {
@@ -11,11 +11,11 @@ interface TimelineItem {
   havza: string;
 }
 
-// Periods
+// Periods with real colors from PERIOD_COLORS
 const PERIODS = [
-  { key: 'formation', start: 600, end: 1000, color: 'rgba(139,69,19,0.06)' },
-  { key: 'development', start: 1000, end: 1800, color: 'rgba(21,101,192,0.04)' },
-  { key: 'modern', start: 1800, end: 2000, color: 'rgba(106,27,154,0.05)' },
+  { key: 'formation', start: 600, end: 1000, color: PERIOD_COLORS.formation, bg: 'rgba(21,101,192,0.06)' },
+  { key: 'development', start: 1000, end: 1800, color: PERIOD_COLORS.development, bg: 'rgba(46,125,50,0.04)' },
+  { key: 'contraction', start: 1800, end: 2000, color: PERIOD_COLORS.contraction, bg: 'rgba(230,81,0,0.06)' },
 ];
 
 export default function TimelineView() {
@@ -96,19 +96,33 @@ export default function TimelineView() {
       .paddingInner(0.15)
       .paddingOuter(0.1);
 
-    // Period backgrounds
-    g.append('g').attr('class', 'periods')
-      .selectAll('rect')
+    // Period backgrounds with colored top stripe
+    const periodsG = g.append('g').attr('class', 'periods');
+    periodsG.selectAll('rect.period-bg')
       .data(PERIODS)
       .join('rect')
+      .attr('class', 'period-bg')
       .attr('x', d => xScale(d.start))
       .attr('y', 0)
       .attr('width', d => xScale(d.end) - xScale(d.start))
       .attr('height', chartHeight)
-      .attr('fill', d => d.color)
+      .attr('fill', d => d.bg)
       .attr('rx', 4);
 
-    // Period labels at top
+    // Colored top stripe for each period
+    periodsG.selectAll('rect.period-stripe')
+      .data(PERIODS)
+      .join('rect')
+      .attr('class', 'period-stripe')
+      .attr('x', d => xScale(d.start))
+      .attr('y', -2)
+      .attr('width', d => xScale(d.end) - xScale(d.start))
+      .attr('height', 3)
+      .attr('fill', d => d.color)
+      .attr('rx', 1.5)
+      .attr('opacity', 0.7);
+
+    // Period labels at top — clickable
     g.append('g').attr('class', 'period-labels')
       .selectAll('text')
       .data(PERIODS)
@@ -117,10 +131,17 @@ export default function TimelineView() {
       .attr('y', -10)
       .attr('text-anchor', 'middle')
       .attr('font-size', 10)
-      .attr('fill', '#9B8C7E')
+      .attr('fill', d => d.color)
       .attr('font-family', "'Crimson Pro', Georgia, serif")
       .attr('font-style', 'italic')
-      .text(d => t(`periods.${d.key}`));
+      .attr('font-weight', 600)
+      .attr('cursor', 'pointer')
+      .text(d => t(`periods.${d.key}`))
+      .on('click', (_event, d) => {
+        navigate(`/periodization#${d.key}`);
+      })
+      .on('mouseover', function () { d3.select(this).attr('text-decoration', 'underline'); })
+      .on('mouseout', function () { d3.select(this).attr('text-decoration', 'none'); });
 
     // Havza band separators
     g.append('g').attr('class', 'band-lines')

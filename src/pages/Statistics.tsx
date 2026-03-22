@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import * as d3 from 'd3';
 import { useAuthors, useWorks, useRelations, useStats } from '../hooks/useData';
-import { HAVZA_COLORS, HAVZA_ORDER, TYPE_COLORS } from '../utils/colors';
+import { HAVZA_COLORS, HAVZA_ORDER, TYPE_COLORS, PERIOD_COLORS, PERIOD_RANGES } from '../utils/colors';
 
 /* ─── Havza Stacked Bar Chart ─── */
 function HavzaCenturyChart({ authors }: { authors: { havza: string; yuzyil: number | null }[] }) {
@@ -219,6 +219,117 @@ function RelationsSummary({ relations }: { relations: { type: string; both_in_it
 }
 
 /* ─── Havza Comparison Table ─── */
+/* ─── Period × Havza Heatmap ─── */
+const PERIOD_KEYS_STAT = ['formation', 'development', 'contraction'] as const;
+
+function PeriodHavzaHeatmap({ authors }: { authors: { havza: string; yuzyil: number | null; vefat_yili_m?: number | null }[] }) {
+  const { t } = useTranslation();
+  const ref = useRef<SVGSVGElement>(null);
+
+  const matrix = useMemo(() => {
+    const rows: { havza: string; period: string; count: number }[] = [];
+    for (const h of HAVZA_ORDER) {
+      for (const pk of PERIOD_KEYS_STAT) {
+        const [cMin, cMax] = PERIOD_RANGES[pk];
+        const count = authors.filter(a => {
+          if (a.havza !== h) return false;
+          const c = a.yuzyil ?? (a.vefat_yili_m ? Math.ceil(a.vefat_yili_m / 100) : null);
+          return c !== null && c >= cMin && c <= cMax;
+        }).length;
+        rows.push({ havza: h, period: pk, count });
+      }
+    }
+    return rows;
+  }, [authors]);
+
+  useEffect(() => {
+    if (!ref.current || !matrix.length) return;
+    const svg = d3.select(ref.current);
+    svg.selectAll('*').remove();
+
+    const margin = { top: 50, right: 30, bottom: 20, left: 110 };
+    const cellW = 140;
+    const cellH = 36;
+    const width = margin.left + PERIOD_KEYS_STAT.length * cellW + margin.right;
+    const height = margin.top + HAVZA_ORDER.length * cellH + margin.bottom;
+
+    svg.attr('viewBox', `0 0 ${width} ${height}`).attr('width', '100%').attr('height', height);
+    const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+    const maxCount = Math.max(...matrix.map(m => m.count), 1);
+    const colorScale = d3.scaleSequential(d3.interpolateYlOrBr).domain([0, maxCount]);
+
+    // Column headers (periods)
+    PERIOD_KEYS_STAT.forEach((pk, i) => {
+      g.append('text')
+        .attr('x', i * cellW + cellW / 2)
+        .attr('y', -12)
+        .attr('text-anchor', 'middle')
+        .attr('font-size', 12)
+        .attr('font-weight', 600)
+        .attr('fill', PERIOD_COLORS[pk])
+        .attr('font-family', "'Crimson Pro', Georgia, serif")
+        .text(t(`periods.${pk}`));
+
+      // Period century range
+      const [cMin, cMax] = PERIOD_RANGES[pk];
+      g.append('text')
+        .attr('x', i * cellW + cellW / 2)
+        .attr('y', -28)
+        .attr('text-anchor', 'middle')
+        .attr('font-size', 9)
+        .attr('fill', '#9B8C7E')
+        .text(`${cMin}.–${cMax}. ${t('dashboard.century_suffix')}`);
+    });
+
+    // Row labels (havzas)
+    HAVZA_ORDER.forEach((h, j) => {
+      g.append('text')
+        .attr('x', -8)
+        .attr('y', j * cellH + cellH / 2 + 1)
+        .attr('text-anchor', 'end')
+        .attr('dominant-baseline', 'middle')
+        .attr('font-size', 11)
+        .attr('fill', HAVZA_COLORS[h])
+        .attr('font-weight', 600)
+        .text(t(`havza_names.${h}`));
+    });
+
+    // Cells
+    for (const m of matrix) {
+      const i = PERIOD_KEYS_STAT.indexOf(m.period as any);
+      const j = HAVZA_ORDER.indexOf(m.havza);
+      if (i < 0 || j < 0) continue;
+
+      g.append('rect')
+        .attr('x', i * cellW + 2)
+        .attr('y', j * cellH + 2)
+        .attr('width', cellW - 4)
+        .attr('height', cellH - 4)
+        .attr('rx', 4)
+        .attr('fill', m.count > 0 ? colorScale(m.count) : 'var(--bg-secondary, #F5F0EB)')
+        .attr('stroke', 'var(--border, #E2D9CE)')
+        .attr('stroke-width', 0.5);
+
+      g.append('text')
+        .attr('x', i * cellW + cellW / 2)
+        .attr('y', j * cellH + cellH / 2 + 1)
+        .attr('text-anchor', 'middle')
+        .attr('dominant-baseline', 'middle')
+        .attr('font-size', 13)
+        .attr('font-weight', m.count > 0 ? 700 : 400)
+        .attr('fill', m.count > maxCount * 0.5 ? '#fff' : m.count > 0 ? '#3E2F1C' : '#BCAB99')
+        .text(m.count > 0 ? m.count.toLocaleString() : '—');
+    }
+  }, [matrix, t]);
+
+  return (
+    <div className="stat-chart-wrap" style={{ overflowX: 'auto' }}>
+      <svg ref={ref} />
+    </div>
+  );
+}
+
 function HavzaTable({ authors, works }: { authors: { havza: string; yuzyil: number | null; dia_slug: string }[]; works: { havza: string }[] }) {
   const { t } = useTranslation();
 
@@ -332,6 +443,12 @@ export default function Statistics() {
       <section className="stat-section">
         <h2 className="stat-section-title">{t('statistics.relations_overview')}</h2>
         <RelationsSummary relations={relations} />
+      </section>
+
+      {/* Period × Havza Heatmap */}
+      <section className="stat-section">
+        <h2 className="stat-section-title">{t('statistics.period_havza_heatmap')}</h2>
+        <PeriodHavzaHeatmap authors={authors} />
       </section>
 
       {/* Top Cities */}

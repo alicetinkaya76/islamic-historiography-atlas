@@ -5,10 +5,13 @@ import { MapContainer, TileLayer, GeoJSON, CircleMarker, Popup } from 'react-lea
 import type { LatLngExpression } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useAuthors, useCityCoords, useHavzaGeo, type Author, type CityCoords } from '../hooks/useData';
-import { HAVZA_COLORS, HAVZA_COLORS_LIGHT, HAVZA_ORDER } from '../utils/colors';
+import { HAVZA_COLORS, HAVZA_COLORS_LIGHT, HAVZA_ORDER, PERIOD_COLORS, PERIOD_RANGES } from '../utils/colors';
 
 const MAP_CENTER: LatLngExpression = [30, 45];
 const MAP_ZOOM = 4;
+
+const PERIOD_KEYS = ['formation', 'development', 'contraction'] as const;
+type PeriodKey = typeof PERIOD_KEYS[number];
 
 interface CityCluster {
   city: string;
@@ -70,17 +73,28 @@ export default function MapView() {
   const { coords, loading: cLoading } = useCityCoords();
   const { geo, loading: gLoading } = useHavzaGeo();
   const [activeHavza, setActiveHavza] = useState('');
+  const [activePeriod, setActivePeriod] = useState<PeriodKey | ''>('');
   const [selectedCluster, setSelectedCluster] = useState<CityCluster | null>(null);
+
+  // Period-filtered authors
+  const filteredAuthors = useMemo(() => {
+    if (!activePeriod) return authors;
+    const [cMin, cMax] = PERIOD_RANGES[activePeriod];
+    return authors.filter(a => {
+      const c = a.yuzyil ?? (a.vefat_yili_m ? Math.ceil(a.vefat_yili_m / 100) : null);
+      return c !== null && c >= cMin && c <= cMax;
+    });
+  }, [authors, activePeriod]);
 
   const havzaCounts = useMemo(() => {
     const m: Record<string, number> = {};
-    for (const a of authors) m[a.havza] = (m[a.havza] || 0) + 1;
+    for (const a of filteredAuthors) m[a.havza] = (m[a.havza] || 0) + 1;
     return m;
-  }, [authors]);
+  }, [filteredAuthors]);
 
   const clusters = useMemo(
-    () => buildClusters(authors, coords, activeHavza),
-    [authors, coords, activeHavza]
+    () => buildClusters(filteredAuthors, coords, activeHavza),
+    [filteredAuthors, coords, activeHavza]
   );
 
   const geocodedCount = useMemo(() => {
@@ -95,9 +109,32 @@ export default function MapView() {
       <header className="list-header">
         <h1>{t('nav.map')}</h1>
         <span className="list-count">
-          {geocodedCount} / {authors.length} {t('common.scholar_count')} {t('map.geocoded')}
+          {geocodedCount} / {filteredAuthors.length} {t('common.scholar_count')} {t('map.geocoded')}
         </span>
       </header>
+
+      {/* Period filter pills */}
+      <div className="period-filter-bar">
+        <button
+          className={`period-pill ${activePeriod === '' ? 'period-pill-active' : ''}`}
+          onClick={() => setActivePeriod('')}
+        >
+          {t('common.all')}
+        </button>
+        {PERIOD_KEYS.map(pk => (
+          <button
+            key={pk}
+            className={`period-pill ${activePeriod === pk ? 'period-pill-active' : ''}`}
+            style={{
+              borderColor: PERIOD_COLORS[pk],
+              ...(activePeriod === pk ? { background: PERIOD_COLORS[pk], color: '#fff' } : { color: PERIOD_COLORS[pk] }),
+            }}
+            onClick={() => setActivePeriod(prev => prev === pk ? '' : pk)}
+          >
+            {t(`periods.${pk}`)}
+          </button>
+        ))}
+      </div>
 
       <div className="map-layout">
         <HavzaLegend
